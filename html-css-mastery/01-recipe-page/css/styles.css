@@ -1,0 +1,212 @@
+:root {
+    --primary: linear-gradient(135deg, #FF8C42, #FFB347); 
+    --orange-vibrant: #FF8C42;
+    --bg-body: #1A1A1D;
+    --bg-card: #252529;
+    --text-main: #f8fafc; 
+    --text-grey: #A0A0A5;
+    --border-color: #3A3A3E;
+}
+
+/* 1. Reset y Estructura Base */
+* { box-sizing: border-box; } /* Fundamental para padding/border */
+
+html { height: 100%; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+main { flex: auto; }
+
+/* 2. Header & Navbar */
+.navbar {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.1); /* Línea sutil en modo oscuro */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.5rem 0; 
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+#logo img { height: 50px; }
+
+/* Efecto de degradado en texto */
+#logo span span {
+  background: var(--primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* 3. Botones (Corregido error de padding-left) */
+.btn {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-icon, .btn-share {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px; /* 20% suele verse raro, 10px es más moderno */
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-icon:hover, .btn-share:hover {
+  filter: brightness(1.2);
+  background: var(--orange-vibrant);
+  border-color: transparent;
+}
+/*4. main grid layout*/
+.title-image {
+  width: 100%;
+  height: 40px;
+  background-image: linear-gradient(to bottom,rgba(0,0,0,0.2),url('./assets/arroz-chaufa.png'));
+  background-size: cover;
+  background-position: center;
+}
+/* 5. Flexbox cards */
+.cooking-time, .dificulty-level-container {
+    background: var(--bg-card);
+    width: 320px;
+    border-radius: 20px;
+    padding:25px;
+    border: 1px solid var(--border-color);
+    font-family: 'Inter', sans-serif;
+    color: white;
+}
+
+.clock-image-container, .footer-container {
+  background: rgba(255, 140, 66, 0.1);
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--orange-vibrant);
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Contenedor de las filas */
+.analyz-minutes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* LA MAGIA: Esto separa el texto del número */
+.time-row {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.label {
+  color: var(--text-grey);
+  font-size: 0.95rem;
+}
+
+.value {
+  font-weight: 500;
+}
+
+/* Separador horizontal */
+.card-separator-grey {
+  height: 1px;
+  background-color: var(--border-color);
+  margin: 5px 0;
+}
+
+/* Estilo del Total */
+.label-total {
+  font-weight: 600;
+}
+
+.value-total {
+  color: var(--orange-vibrant);
+  font-weight: 700;
+}
+
+/* 6. Footer (Corregido selectores) */
+footer {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  background: var(--bg-card);
+  padding: 40px 0;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Para móviles */
+  gap: 20px;
+}
+
+.footer-col {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-col a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.footer-col a:hover {
+  color: var(--orange-vibrant);
+}
+
+.footer-copy h4 {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
