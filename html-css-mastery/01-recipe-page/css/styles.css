@@ -1,30 +1,28 @@
 :root {
-    --primary: linear-gradient(135deg, #FF8C42, #FFB347); 
-    --orange-vibrant: #FF8C42;
-    --bg-body: #1A1A1D;
-    --bg-card: #252529;
-    --text-main: #f8fafc; 
-    --text-grey: #A0A0A5;
-    --border-color: #3A3A3E;
+  --primary: linear-gradient(135deg, #FF8C42, #FFB347); 
+  --orange-vibrant: #FF8C42;
+  --bg-body: #1A1A1D;
+  --bg-card: #252529;
+  --text-main: #f8fafc; 
+  --text-grey: #A0A0A5;
+  --border-color: #3A3A3E;
 }
 
 /* 1. Reset y Estructura Base */
-* { box-sizing: border-box; } /* Fundamental para padding/border */
+* { box-sizing: border-box; } 
 
 html { height: 100%; }
 
 body {
-  display: flex;
-  flex-direction: column;
+  display: flexbox;
   min-height: 100vh;
-  margin: 0;
+  margin: 0px;
   font-family: 'Montserrat', sans-serif;
   background-color: var(--bg-body);
   color: var(--text-main);
   line-height: 1.6;
 }
 
-main { flex: auto; }
 
 /* 2. Header & Navbar */
 .navbar {
@@ -100,16 +98,21 @@ main { flex: auto; }
   background-image: linear-gradient(to bottom,rgba(0,0,0,0.2),url('./assets/arroz-chaufa.png'));
   background-size: cover;
   background-position: center;
+  margin-top: 20px;
+}
+.bento-container {
+  flex-wrap: wrap;
+  justify-content: center;
 }
 /* 5. Flexbox cards */
 .cooking-time, .dificulty-level-container {
-    background: var(--bg-card);
-    width: 320px;
-    border-radius: 20px;
-    padding:25px;
-    border: 1px solid var(--border-color);
-    font-family: 'Inter', sans-serif;
-    color: white;
+  background: var(--bg-card);
+  width: 320px;
+  border-radius: 20px;
+  padding:25px;
+  border: 1px solid var(--border-color);
+  font-family: 'Inter', sans-serif;
+  color: white;
 }
 
 .clock-image-container, .footer-container {
@@ -175,23 +178,23 @@ footer {
   border-top: 1px solid rgba(255,255,255,0.1);
   background: var(--bg-card);
   padding: 40px 0;
-  margin-top: auto;
+  margin-top: 100px;
+  flex: content;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
-  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   flex-wrap: wrap; /* Para móviles */
-  gap: 20px;
 }
 
+
 .footer-col {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .footer-col a {
@@ -205,8 +208,9 @@ footer {
   color: var(--orange-vibrant);
 }
 
+
 .footer-copy h4 {
-    margin: 0;
-    font-size: 0.85rem;
-    color: var(--text-muted);
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
 }
