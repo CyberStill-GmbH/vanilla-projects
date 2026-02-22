@@ -192,7 +192,7 @@ main {
   transition: transform 0.5s ease;
 }
 img {
-  maxwidth: 100%;
+  max-width: 100%;
   height: auto;
   object-fit: cover;
   aspect-ratio: 16 / 9;
