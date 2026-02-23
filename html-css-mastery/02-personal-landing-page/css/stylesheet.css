@@ -32,6 +32,10 @@ main {
   text-align: center;
 }
 
+section {
+  padding: 60px 20px;
+}
+
 .navbar {
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(12px);
@@ -95,7 +99,12 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 800px;
+  width: auto;
+}
+@media (max-width: 300px) {
+  .self-presentation {
+    width: 300px;
+  }
 }
 
 .profession {
