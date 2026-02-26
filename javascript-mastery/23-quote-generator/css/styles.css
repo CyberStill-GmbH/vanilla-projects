@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  /* Pastel colors design */
+  --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --primary-pastel: #b8c6db; /* Soft Blue */
+  --secondary-pastel: #f5f7fa; /* Whisper Grey */
+  --accent-color: #ffc3a0; /* Peach Pink */
+  
+  /* Text colors */
+  --text-main: #5d5d5d;
+  --text-muted: #8e8e8e;
+  
+  /* Border and shadows */
+  --soft-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --border-glass: 1px solid rgba(255, 255, 255, 0.5);
+  
+  /* Typos */
+  --font-main: 'Poppins', sans-serif;
+  --font-quote: 'Playfair Display', serif; /* Phrase design ideal */
+}
+
+/* Aplicar box-sizing a TODO para evitar que el padding estire los elementos */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    background: var(--bg-gradient);
+    overflow-x: hidden; 
+    transition: background 1.5s ease;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px; 
+}
+/* Brightness animation */
+@keyframes glow {
+    0% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
+    50% { box-shadow: 0 0 20px var(--accent-color); }
+    100% { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); }
+}
+
+/* bottom cute design */
+.btn-shine {
+    position: relative;
+    padding: 14px 30px;
+    border: none;
+    background: var(--accent-color);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-family: var(--font-main);
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: 50px; 
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease; 
+    border: 1px solid var(--border-glass);
+    box-shadow: 0 4px 15px rgba(255, 195, 160, 0.4);
+    flex-shrink: 0; 
+}
+
+.btn-shine:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 195, 160, 0.6);
+    filter: brightness(1.05);
+}
+
+.btn-shine:active {
+    transform: translateY(-1px);
+}
+
+/*Phrase Container Design*/
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; 
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;             
+    align-items: center;
+    border: var(--border-glass);
+    background-color: var(--card-bg); 
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    box-shadow: var(--soft-shadow);
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    min-height: 380px;
+    padding: 50px 40px;
+    text-align: center;
+    overflow-y: auto;
+    overflow-x: hidden; 
+}
+
+.card-glow {
+    animation: glow 0.8s ease-out;
+}
+
+
+#phres-pos {
+    font-family: var(--font-quote);
+    color: var(--text-main);
+    text-align: center;
+    font-size: clamp(1.5rem, 5vw, 2.2rem); 
+    line-height: 1.4;
+    margin: 20px 0;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    width: 100%;
+    max-width: 100%;
+    display: block; 
+}
+/* Stelar effect */
+button span {
+    font-family: var(--font-main);
+}
+
+.btn-shine::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: rotate(30deg);
+    transition: all 0.6s ease; 
+}
+
+.btn-shine:hover::after {
+    left: 120%;
+}
