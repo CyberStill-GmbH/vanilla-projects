@@ -5,140 +5,393 @@
   --app-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
-  --card: #ffffff;
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: #030213;
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.0058 264.53);
-  --secondary-foreground: #030213;
-  --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #e9ebef;
-  --accent-foreground: #030213;
-  --destructive: #d4183d;
-  --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
-  --input: transparent;
-  --input-background: #f3f3f5;
-  --switch-background: #cbced4;
-  --font-weight-medium: 500;
-  --font-weight-normal: 400;
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+  --border: rgba(255, 255, 255, 0.15);
   --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: #030213;
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
   --font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
-
-*, *::after, *::before {
-    box-sizing: border-box;
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
 }
 
+
 body {
-    font-family: var(--font-family);
-    font-size: var(--font-size);
-    color: var(--background);
-    background: var(--app-background);
-    transition: background-color 0.3 ease; /* make a soft color change */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  background: var(--app-background);
+  color: var(--background);
+}
+body:hover {
+  transition: all 0.3s ease;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2rem;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
 .changer-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.palet-svg {
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    width: 45px;
-    height: 45px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    color: var(--background);
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;  
+.palet-svg,
+.squareContainer-svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 45px;
+  height: 45px;
+
+  border: 1px solid var(--border);
+  border-radius: 50%;
+
+  color: var(--background);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
-.palet-svg svg {
-    display: block;
-    width: 28px; 
-    height: 28px;
+.palet-svg svg,
+.squareContainer-svg svg {
+  width: 28px;
+  height: 28px;
+}
+
+h1,
+h2,
+h3,
+p,
+label {
+  color: var(--background);
 }
 
 h1 {
-    margin: 0;
-    font-size: 40px;
-    color: var(--background);
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1);
-}
- .button-container {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    padding: 0 18px 0 18px;
+  margin: 0;
+  font-size: 40px;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.button-changer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 6px 12px;
-    gap: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    background-color: color-mix(in srgb, var(--background), transparent 75%);
-    border-radius: var(--radius);
-    gap: 10px;
-    transition: all 0.3s ease;
-    color: var(--background);
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+h2,
+h3 {
+  margin: 0;
 }
 
-.button-changer:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button-changer,
+.apply {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+  padding: 8px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+
+  cursor: pointer;
+  color: var(--background);
+  background-color: rgba(255, 255, 255, 0.1);
+
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.button-changer:hover,
+.apply:hover {
+  transform: translateY(-1px);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.button-changer svg,
+.apply svg {
+  width: 24px;
+  height: 24px;
+}
+
+.colors-gradients,
+.card-picker {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  width: min(90%, 460px);
+  max-width: 460px;
+
+  padding: 20px;
+
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.color-picker,
+.gradient-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.gradient-picker {
+  margin-top: 20px;
+}
+
+.head-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .palette-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 10px;
-    max-width: 300px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 12px;
+  width: 100%;
+  margin: 20px 0;
 }
 
 .panel {
-    display: block;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background-color: #ccc;
-    border-radius: var(--border);
-    
+  display: block;
+
+  width: 100%;
+  min-height: 70px;
+  aspect-ratio: 1 / 1;
+
+  border-radius: calc(var(--radius) - 4px);
+  background-color: #ccc;
+
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.panel:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 8px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+
+  color: var(--background);
+  background-color: rgba(255, 255, 255, 0.1);
+
+  outline: none;
+}
+
+.input-container input[type="text"] {
+  cursor: text;
+}
+
+.input-container input[type="color"] {
+  height: 42px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.input-container input:hover,
+.input-container input:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.input-container input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.copy-container,
+.copy-css {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#type-span {
+  display: flex;
+  gap: 8px;
+}
+
+.opacity {
+  opacity: 0.75;
+}
+
+.boldness {
+  font-weight: 700;
+}
+
+.code-container {
+  width: 100%;
+  min-height: 48px;
+
+  padding: 12px;
+
+  border-radius: var(--radius);
+  background-color: rgba(0, 0, 0, 0.18);
+}
+
+code {
+  color: var(--background);
+  word-break: break-word;
+}
+
+.footer-copy p,
+#proTip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+.footer-copy svg {
+  flex-shrink: 0;
+}
+
+/* Solid colors */
+.palette-grid .panel-color:nth-child(1) { background-color: #6366f1; }
+.palette-grid .panel-color:nth-child(2) { background-color: #ec4899; }
+.palette-grid .panel-color:nth-child(3) { background-color: #10b981; }
+.palette-grid .panel-color:nth-child(4) { background-color: #f59e0b; }
+.palette-grid .panel-color:nth-child(5) { background-color: #ef4444; }
+.palette-grid .panel-color:nth-child(6) { background-color: #06b6d4; }
+.palette-grid .panel-color:nth-child(7) { background-color: #8b5cf6; }
+.palette-grid .panel-color:nth-child(8) { background-color: #84cc16; }
+.palette-grid .panel-color:nth-child(9) { background-color: #f97316; }
+.palette-grid .panel-color:nth-child(10) { background-color: #14b8a6; }
+.palette-grid .panel-color:nth-child(11) { background-color: #0f172a; }
+.palette-grid .panel-color:nth-child(12) { background-color: #ffff11; }
+
+/* Modern degrades */
+/* --- CONFIGURACIÓN BASE PARA LOS PANELES --- */
+.palette-grid .gradient-panel {
+    display: block; /* o inline-block según tu diseño */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.palette-grid .gradient-panel:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* --- LOS 12 DEGRADADOS ÉLITE (ESTÁTICOS) --- */
+
+/* 1. Cyberpunk Neon */
+.palette-grid .gradient-panel:nth-child(1) {
+    background: linear-gradient(45deg, #ff007f, #7f00ff);
+}
+
+/* 2. Electric Blue */
+.palette-grid .gradient-panel:nth-child(2) {
+    background: linear-gradient(45deg, #00f2fe, #4facfe);
+}
+
+/* 3. Emerald Mint */
+.palette-grid .gradient-panel:nth-child(3) {
+    background: linear-gradient(45deg, #11998e, #38ef7d);
+}
+
+/* 4. Sunset Fire */
+.palette-grid .gradient-panel:nth-child(4) {
+    background: linear-gradient(45deg, #ff9900, #ff5555);
+}
+
+/* 5. Cosmic Violet */
+.palette-grid .gradient-panel:nth-child(5) {
+    background: linear-gradient(45deg, #7f00ff, #e100ff);
+}
+
+/* 6. Magic Aquamarine */
+.palette-grid .gradient-panel:nth-child(6) {
+    background: linear-gradient(45deg, #43e97b, #38f9d7);
+}
+
+/* 7. Pastel Peach */
+.palette-grid .gradient-panel:nth-child(7) {
+    background: linear-gradient(45deg, #fa709a, #fee140);
+}
+
+/* 8. Rose Volcano */
+.palette-grid .gradient-panel:nth-child(8) {
+    background: linear-gradient(45deg, #f857a6, #ff5858);
+}
+
+/* 9. Deep Ocean */
+.palette-grid .gradient-panel:nth-child(9) {
+    background: linear-gradient(45deg, #30cfd0, #330867);
+}
+
+/* 10. Cotton Candy */
+.palette-grid .gradient-panel:nth-child(10) {
+    background: linear-gradient(45deg, #fccb90, #d57eeb);
+}
+
+/* 11. Midnight Wine */
+.palette-grid .gradient-panel:nth-child(11) {
+    background: linear-gradient(45deg, #1d2671, #c33764);
+}
+
+/* 12. Dark Steel (Efecto metálico de 3 colores) */
+.palette-grid .gradient-panel:nth-child(12) {
+    background: linear-gradient(45deg, #0f2027, #203a43, #2c5364);
+}
+
+/* Desktop */
+@media (min-width: 600px) {
+  .colors-gradients,
+  .card-picker {
+    width: min(100%, 460px);
+    padding: 32px;
+  }
+
+  .input-container {
+    flex-direction: row;
+  }
+
+  .input-container input {
+    flex: 1;
+  }
+
+  .palette-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .panel {
+    height: 90px;
+  }
 }
