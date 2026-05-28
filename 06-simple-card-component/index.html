@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Simple Card Component</title>
+</head>
+<body>
+    <article class="project-card">
+
+        <header class="card-header">
+            <div class="icon-folder">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            </div>
+            <span class="badge badge--active">
+            <span class="badge-dot"></span> Active
+            </span>
+        </header>
+
+        <div class="card-body">
+            <h3 class="card-title">Fintech Mobile App Redesign</h3>
+            <p class="card-description">Improve onboarding conversion and simplif...</p>
+            
+            <div class="card-meta">
+                <span class="meta-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"></circle><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path></svg>
+                    NeoPay
+                </span>
+                <span class="meta-separator">•</span>
+                <span class="meta-item">MVP 2 weeks</span>
+            </div>
+
+            <div class="card-meta card-meta--spaced">
+                <span class="meta-item">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>
+                    Nov 6, 2025
+                </span>
+                <span class="meta-item meta-priority">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-4"></path></svg>
+                    <strong>High</strong>
+                </span>
+            </div>
+        </div>
+
+        <hr class="card-divider" />
+
+        <footer class="card-footer">
+            <div class="footer-stats">
+                <span class="stat-item stat-progress">
+                    <svg class="progress-ring" width="18" height="18" viewBox="0 0 24 24" aria-label="72% progress">
+                        <circle
+                        class="progress-ring__track"
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        />
+                        <circle
+                        class="progress-ring__fill"
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        style="--progress: 72"
+                        />
+                        </svg>
+                        72%
+                    </span>
+                <span class="stat-item stat-tasks">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                    18/25 Tasks
+                </span>
+            </div>
+            
+            <div class="card-avatar">
+                <img src="./watashi.png" alt="User Avatar" class="avatar" />
+            </div>
+        </footer>
+
+    </article>
+
+</body>
+</html>
