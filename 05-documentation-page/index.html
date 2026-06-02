@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>05-Documentation Page</title>
+</head>
+<body>
+
+  <header>
+    <h1>🦀 CrabKit</h1>
+    <p><strong>A fast, modular web fuzzer written in Rust.</strong></p>
+    <p>
+      <em>Version 0.4.2</em> &mdash;
+      <a href="https://github.com" target="_blank">GitHub</a> |
+      <a href="https://crates.io" target="_blank">crates.io</a> |
+      <a href="#changelog">Changelog</a>
+    </p>
+    <nav>
+      <strong>Contents:</strong>
+      <a href="#overview">Overview</a> |
+      <a href="#install">Installation</a> |
+      <a href="#quickstart">Quickstart</a> |
+      <a href="#cli">CLI Reference</a> |
+      <a href="#modules">Modules</a> |
+      <a href="#config">Configuration</a> |
+      <a href="#examples">Examples</a> |
+      <a href="#changelog">Changelog</a> |
+      <a href="#faq">FAQ</a>
+    </nav>
+    <hr />
+  </header>
+
+  <main>
+
+    <!-- ===================== OVERVIEW ===================== -->
+    <section id="overview">
+      <h2>Overview</h2>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/120px-Rust_programming_language_black_logo.svg.png"
+        alt="Rust programming language logo — a black stylized letter R with a circular gear border, indicating CrabKit is built with Rust"
+        width="72"
+      />
+      <p>
+        <strong>CrabKit</strong> is an open-source, high-performance web fuzzer designed for
+        security researchers, penetration testers, and developers who need to discover hidden
+        endpoints, parameters, subdomains, and vulnerabilities in web applications.
+      </p>
+      <p>
+        Built entirely in <strong>Rust</strong>, CrabKit leverages the language's
+        <em>zero-cost abstractions</em> and ownership model to deliver throughput that
+        matches or exceeds tools written in C, while being memory-safe by construction.
+        No segfaults. No data races. Just fast fuzzing.
+      </p>
+
+      <h3>Key Features</h3>
+      <ul>
+        <li>Async HTTP engine powered by <strong>Tokio</strong> and <strong>reqwest</strong></li>
+        <li>Wordlist-based and mutation-based fuzzing modes</li>
+        <li>Subdomain, path, parameter, and header fuzzing</li>
+        <li>Custom filter rules by status code, response size, and regex</li>
+        <li>Rate limiting and connection pooling</li>
+        <li>Output in plain text, JSON, and JSONL</li>
+        <li>Plugin system via dynamic traits (experimental)</li>
+      </ul>
+
+      <blockquote>
+        <p>
+          CrabKit is <strong>not</strong> a vulnerability scanner. It discovers surface area.
+          What you do with that surface area is your responsibility. Always obtain explicit
+          written permission before fuzzing any target.
+        </p>
+      </blockquote>
+    </section>
+
+    <hr />
+
+    <!-- ===================== INSTALLATION ===================== -->
+    <section id="install">
+      <h2>Installation</h2>
+
+      <h3>Via Cargo (recommended)</h3>
+      <p>Requires Rust <strong>1.75+</strong>. Install Rust via <a href="https://rustup.rs" target="_blank">rustup.rs</a>.</p>
+      <pre><code>cargo install crabkit</code></pre>
+
+      <h3>From Source</h3>
+      <pre><code>git clone https://github.com/example/crabkit.git
+cd crabkit
+cargo build --release
+./target/release/crabkit --version</code></pre>
+
+      <h3>Verify Installation</h3>
+      <pre><code>crabkit --version
+# CrabKit 0.4.2 (2026-05-10)</code></pre>
+
+      <h3>System Requirements</h3>
+      <dl>
+        <dt>OS</dt>
+        <dd>Linux, macOS, Windows (WSL2 recommended on Windows)</dd>
+
+        <dt>Rust toolchain</dt>
+        <dd>Stable channel, 1.75 or later</dd>
+
+        <dt>RAM</dt>
+        <dd>Minimum 256 MB; 1 GB recommended for large wordlists</dd>
+
+        <dt>Network</dt>
+        <dd>Unrestricted outbound HTTP/HTTPS for fuzzing targets</dd>
+      </dl>
+    </section>
+
+    <hr />
+
+    <!-- ===================== QUICKSTART ===================== -->
+    <section id="quickstart">
+      <h2>Quickstart</h2>
+      <p>Fuzz paths on a target using a wordlist:</p>
+      <pre><code>crabkit fuzz \
+  --url https://example.com/FUZZ \
+  --wordlist /usr/share/wordlists/dirb/common.txt \
+  --threads 50 \
+  --filter-status 404</code></pre>
+
+      <p>The placeholder <code>FUZZ</code> in the URL marks the injection point.
+      CrabKit replaces it with each entry in your wordlist.</p>
+
+      <p>Expected output:</p>
+      <pre><code>[200] /admin          (size: 4821)
+[200] /login          (size: 2103)
+[301] /static         → /static/
+[403] /config         (size: 312)
+[200] /api/v1/health  (size: 47)
+
+Done. 4622 requests in 8.3s (556 req/s)</code></pre>
+    </section>
+
+    <hr />
+
+    <!-- ===================== CLI REFERENCE ===================== -->
+    <section id="cli">
+      <h2>CLI Reference</h2>
+
+      <h3>Global Flags</h3>
+      <table border="1" cellpadding="8" cellspacing="0">
+        <caption><strong>Global Options</strong></caption>
+        <thead>
+          <tr>
+            <th scope="col">Flag</th>
+            <th scope="col">Short</th>
+            <th scope="col">Default</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--threads</code></td>
+            <td><code>-t</code></td>
+            <td><code>40</code></td>
+            <td>Number of concurrent async workers</td>
+          </tr>
+          <tr>
+            <td><code>--timeout</code></td>
+            <td><code>-T</code></td>
+            <td><code>10s</code></td>
+            <td>HTTP request timeout</td>
+          </tr>
+          <tr>
+            <td><code>--output</code></td>
+            <td><code>-o</code></td>
+            <td><em>stdout</em></td>
+            <td>File path for output</td>
+          </tr>
+          <tr>
+            <td><code>--format</code></td>
+            <td><code>-f</code></td>
+            <td><code>text</code></td>
+            <td>Output format: <code>text</code>, <code>json</code>, <code>jsonl</code></td>
+          </tr>
+          <tr>
+            <td><code>--rate-limit</code></td>
+            <td><code>-r</code></td>
+            <td><em>none</em></td>
+            <td>Max requests per second (e.g. <code>100</code>)</td>
+          </tr>
+          <tr>
+            <td><code>--verbose</code></td>
+            <td><code>-v</code></td>
+            <td><em>off</em></td>
+            <td>Print all requests, not just matches</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Subcommand: <code>fuzz</code></h3>
+      <table border="1" cellpadding="8" cellspacing="0">
+        <caption><strong>fuzz — Path and Parameter Fuzzing</strong></caption>
+        <thead>
+          <tr>
+            <th scope="col">Flag</th>
+            <th scope="col">Required</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--url</code></td>
+            <td>✅ Yes</td>
+            <td>Target URL with <code>FUZZ</code> placeholder</td>
+          </tr>
+          <tr>
+            <td><code>--wordlist</code></td>
+            <td>✅ Yes</td>
+            <td>Path to wordlist file (one entry per line)</td>
+          </tr>
+          <tr>
+            <td><code>--method</code></td>
+            <td>❌ No</td>
+            <td>HTTP method: <code>GET</code> (default), <code>POST</code>, <code>PUT</code>, <code>DELETE</code></td>
+          </tr>
+          <tr>
+            <td><code>--headers</code></td>
+            <td>❌ No</td>
+            <td>Custom headers as <code>Key:Value</code>, repeatable</td>
+          </tr>
+          <tr>
+            <td><code>--filter-status</code></td>
+            <td>❌ No</td>
+            <td>Hide responses with these status codes (comma-separated)</td>
+          </tr>
+          <tr>
+            <td><code>--match-size</code></td>
+            <td>❌ No</td>
+            <td>Show only responses with exact body size in bytes</td>
+          </tr>
+          <tr>
+            <td><code>--follow-redirects</code></td>
+            <td>❌ No</td>
+            <td>Follow 3xx redirects automatically</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Subcommand: <code>subdomain</code></h3>
+      <pre><code>crabkit subdomain \
+  --domain example.com \
+  --wordlist /path/to/subdomains.txt \
+  --resolver 1.1.1.1</code></pre>
+
+      <h3>Subcommand: <code>vhost</code></h3>
+      <pre><code>crabkit vhost \
+  --url https://10.0.0.1 \
+  --wordlist /path/to/vhosts.txt \
+  --host-header "FUZZ.example.com"</code></pre>
+    </section>
+
+    <hr />
+
+    <!-- ===================== MODULES ===================== -->
+    <section id="modules">
+      <h2>Modules</h2>
+      <p>CrabKit is organized into internal crates. Each module is independently testable.</p>
+
+      <dl>
+        <dt><strong><code>crabkit-core</code></strong></dt>
+        <dd>
+          The engine. Manages the async task scheduler, connection pool, and request pipeline.
+          Built on <a href="https://tokio.rs" target="_blank">Tokio</a>.
+        </dd>
+
+        <dt><strong><code>crabkit-http</code></strong></dt>
+        <dd>
+          HTTP client abstraction over <code>reqwest</code>. Handles retries, redirects,
+          TLS configuration, and proxy support.
+        </dd>
+
+        <dt><strong><code>crabkit-wordlist</code></strong></dt>
+        <dd>
+          Wordlist loader and iterator. Supports plain text files, compressed
+          <code>.gz</code> lists, and stdin piping. Memory-maps large files for efficiency.
+        </dd>
+
+        <dt><strong><code>crabkit-filter</code></strong></dt>
+        <dd>
+          Response filtering engine. Evaluates status code ranges, body size,
+          regex patterns, and response time thresholds.
+        </dd>
+
+        <dt><strong><code>crabkit-output</code></strong></dt>
+        <dd>
+          Output serializers for <code>text</code>, <code>json</code>, and <code>jsonl</code> formats.
+          Supports concurrent writes to stdout and file simultaneously.
+        </dd>
+
+        <dt><strong><code>crabkit-plugin</code></strong> <em>(experimental)</em></dt>
+        <dd>
+          Dynamic plugin system using Rust trait objects loaded at runtime.
+          Allows custom request mutation, post-processing, and reporting extensions.
+        </dd>
+      </dl>
+    </section>
+
+    <hr />
+
+    <!-- ===================== CONFIGURATION ===================== -->
+    <section id="config">
+      <h2>Configuration File</h2>
+      <p>
+        CrabKit reads from <code>~/.config/crabkit/config.toml</code> if present.
+        CLI flags always override file settings.
+      </p>
+
+      <pre><code># ~/.config/crabkit/config.toml
+
+[defaults]
+threads     = 50
+timeout     = "8s"
+format      = "json"
+follow_redirects = false
+
+[http]
+user_agent  = "CrabKit/0.4.2"
+proxy       = "http://127.0.0.1:8080"  # optional, e.g. Burp Suite
+
+[filter]
+hide_status = [404, 400]
+min_size    = 0       # bytes; 0 = no minimum
+max_size    = 0       # bytes; 0 = no maximum</code></pre>
+
+      <h3>Environment Variables</h3>
+      <table border="1" cellpadding="8" cellspacing="0">
+        <caption><strong>Supported Environment Variables</strong></caption>
+        <thead>
+          <tr>
+            <th scope="col">Variable</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>CRABKIT_THREADS</code></td>
+            <td>Override default thread count</td>
+          </tr>
+          <tr>
+            <td><code>CRABKIT_PROXY</code></td>
+            <td>HTTP/SOCKS5 proxy URL</td>
+          </tr>
+          <tr>
+            <td><code>CRABKIT_LOG</code></td>
+            <td>Log level: <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code>, <code>trace</code></td>
+          </tr>
+          <tr>
+            <td><code>CRABKIT_NO_COLOR</code></td>
+            <td>Set to <code>1</code> to disable colored terminal output</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr />
+
+    <!-- ===================== EXAMPLES ===================== -->
+    <section id="examples">
+      <h2>Examples</h2>
+
+      <h3>POST body fuzzing</h3>
+      <pre><code>crabkit fuzz \
+  --url https://target.com/api/login \
+  --method POST \
+  --headers "Content-Type:application/json" \
+  --data '{"username":"admin","password":"FUZZ"}' \
+  --wordlist passwords.txt \
+  --filter-status 401</code></pre>
+
+      <h3>JSON output piped to jq</h3>
+      <pre><code>crabkit fuzz \
+  --url https://target.com/FUZZ \
+  --wordlist common.txt \
+  --format json \
+  | jq '.[] | select(.status == 200) | .path'</code></pre>
+
+      <h3>Fuzzing with a custom User-Agent and proxy</h3>
+      <pre><code>CRABKIT_PROXY=http://127.0.0.1:8080 \
+crabkit fuzz \
+  --url https://target.com/FUZZ \
+  --wordlist paths.txt \
+  --headers "User-Agent:Mozilla/5.0 (compatible; MyScanner/1.0)"</code></pre>
+
+      <h3>Subdomain enumeration</h3>
+      <pre><code>crabkit subdomain \
+  --domain example.com \
+  --wordlist subdomains-top1m.txt \
+  --threads 100 \
+  --output results.json \
+  --format json</code></pre>
+    </section>
+
+    <hr />
+
+    <!-- ===================== CHANGELOG ===================== -->
+    <section id="changelog">
+      <h2>Changelog</h2>
+
+      <table border="1" cellpadding="8" cellspacing="0">
+        <caption><strong>Release History</strong></caption>
+        <thead>
+          <tr>
+            <th scope="col">Version</th>
+            <th scope="col">Date</th>
+            <th scope="col">Highlights</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>0.4.2</strong></td>
+            <td><time datetime="2026-05-10">2026-05-10</time></td>
+            <td>Fix: panic on empty wordlist lines; add <code>--rate-limit</code> flag</td>
+          </tr>
+          <tr>
+            <td>0.4.0</td>
+            <td><time datetime="2026-03-01">2026-03-01</time></td>
+            <td>New: <code>vhost</code> subcommand; JSONL output format; connection pool tuning</td>
+          </tr>
+          <tr>
+            <td>0.3.5</td>
+            <td><time datetime="2025-11-20">2025-11-20</time></td>
+            <td>Fix: TLS handshake timeout on slow targets; improved error messages</td>
+          </tr>
+          <tr>
+            <td>0.3.0</td>
+            <td><time datetime="2025-08-14">2025-08-14</time></td>
+            <td>New: Plugin system (experimental); <code>subdomain</code> subcommand; config file support</td>
+          </tr>
+          <tr>
+            <td>0.2.0</td>
+            <td><time datetime="2025-04-02">2025-04-02</time></td>
+            <td>Initial public release with <code>fuzz</code> subcommand and basic filtering</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr />
+
+    <!-- ===================== FAQ ===================== -->
+    <section id="faq">
+      <h2>FAQ</h2>
+
+      <dl>
+        <dt><strong>Is CrabKit legal to use?</strong></dt>
+        <dd>
+          Only against targets you own or have <em>explicit written permission</em> to test.
+          Unauthorized fuzzing is illegal in most jurisdictions. CrabKit is a tool;
+          legality depends entirely on how and where you use it.
+        </dd>
+
+        <dt><strong>Why Rust? Why not Go or Python?</strong></dt>
+        <dd>
+          Rust provides native async performance without a garbage collector,
+          which means consistent throughput even under high concurrency.
+          A CrabKit run at 1000 req/s will not pause for GC cycles.
+          It also means the binary is a single self-contained file with no runtime dependency.
+        </dd>
+
+        <dt><strong>How does CrabKit compare to <code>ffuf</code> or <code>feroxbuster</code>?</strong></dt>
+        <dd>
+          <a href="https://github.com/ffuf/ffuf" target="_blank">ffuf</a> is written in Go and is excellent.
+          <a href="https://github.com/epi052/feroxbuster" target="_blank">feroxbuster</a> is also written in Rust
+          and is the closest spiritual relative to CrabKit. CrabKit differentiates itself with
+          its modular crate architecture and the experimental plugin system.
+        </dd>
+
+        <dt><strong>Can I contribute?</strong></dt>
+        <dd>
+          Yes. See <code>CONTRIBUTING.md</code> in the repository.
+          All contributions require passing <code>cargo test</code>, <code>cargo clippy</code>,
+          and <code>cargo fmt --check</code> before review.
+        </dd>
+
+        <dt><strong>The fuzzer is slower than expected. What should I check?</strong></dt>
+        <dd>
+          <ul>
+            <li>Increase <code>--threads</code> (default is 40; try 100–200 for fast targets)</li>
+            <li>Check if <code>--rate-limit</code> is set unintentionally in your config file</li>
+            <li>Use <code>CRABKIT_LOG=debug</code> to inspect connection pool behavior</li>
+            <li>Ensure the target is not throttling responses (look at response times in <code>--verbose</code>)</li>
+          </ul>
+        </dd>
+      </dl>
+    </section>
+
+  </main>
+
+  <hr />
+  <footer>
+    <p>
+      <a href="#overview">↑ Overview</a> |
+      <a href="#install">↑ Install</a> |
+      <a href="#quickstart">↑ Quickstart</a> |
+      <a href="#cli">↑ CLI</a> |
+      <a href="#modules">↑ Modules</a> |
+      <a href="#config">↑ Config</a> |
+      <a href="#examples">↑ Examples</a> |
+      <a href="#changelog">↑ Changelog</a> |
+      <a href="#faq">↑ FAQ</a>
+    </p>
+    <p>
+      <small>
+        CrabKit is a fictional project created for educational demonstration purposes.
+        &copy; 2026 CrabKit Contributors &mdash; MIT License
+      </small>
+    </p>
+  </footer>
+
+</body>
+</html>
