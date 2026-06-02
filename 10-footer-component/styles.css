@@ -1,0 +1,471 @@
+:root {
+  /* Colores */
+  --color-bg: #f0f0f0;
+  --color-card-bg: #ffffff;
+  --color-text-primary: #111111;
+  --color-text-secondary: #555555;
+  --color-text-muted: #7a7a7a;
+  --color-border: #e5e5e5;
+  --color-btn-bg: #111111;
+  --color-btn-text: #bababa;
+  --color-input-bg: #f7f7f7;
+
+  /* Tipografía */
+  --font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-size-xs: 0.72rem;
+  --font-size-sm: 0.85rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.15rem;
+  --font-size-xl: 2rem;
+
+  /* Bordes */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Sombras */
+  --shadow-card: 0 2px 24px rgba(0, 0, 0, 0.07);
+  --shadow-btn: 0 2px 8px rgba(0, 0, 0, 0.18);
+
+  /* Espaciado - escala consistente */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+
+  /* Animaciones - valores únicos */
+  --orbit-outer-radius: 118px;
+  --orbit-inner-radius: 64px;
+  --orbit-outer-duration: 15s;
+  --orbit-inner-duration: 10s;
+}
+
+/* Reset mínimo */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+
+/* ===========================================
+   AFFILIATE SECTION
+   Card promocional con visual de órbitas
+   =========================================== */
+.affiliate-section {
+  padding: var(--spacing-xl) var(--spacing-lg);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.affiliate-card {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 56px 64px;
+  gap: var(--spacing-lg);
+  overflow: hidden;
+}
+
+/* Contenido textual */
+.affiliate-content {
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.affiliate-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  letter-spacing: 0.01em;
+}
+
+.affiliate-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.affiliate-desc {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+.affiliate-desc strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.affiliate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  padding: 12px 22px;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  box-shadow: var(--shadow-btn);
+  width: fit-content;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.affiliate-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* ===========================================
+   VISUAL DE ÓRBITAS
+   Avatares girando alrededor de un ícono central
+   =========================================== */
+.affiliate-visual {
+  position: relative;
+  width: 340px;
+  height: 280px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.center-icon {
+  position: absolute;
+  z-index: 10;
+  width: 52px;
+  height: 52px;
+  background: #fff;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(0, 0, 0, 0.055);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.12),
+    0 0 0 10px rgba(0, 0, 0, 0.018);
+}
+
+.center-icon img,
+.center-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Avatares base */
+.avatar {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  margin: -22px;
+  border: 3px solid #fff;
+  background: #fff;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.16),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+  will-change: transform;
+  transition: box-shadow 0.25s, filter 0.25s;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar:hover {
+  z-index: 20;
+  filter: brightness(1.08) contrast(1.04);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.22),
+    0 0 0 6px rgba(0, 0, 0, 0.045);
+  animation-play-state: paused;
+}
+
+/* Keyframes de órbita */
+@keyframes orbit-outer {
+  from { transform: rotate(0deg) translateX(var(--orbit-outer-radius)) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(var(--orbit-outer-radius)) rotate(-360deg); }
+}
+
+@keyframes orbit-inner {
+  from { transform: rotate(0deg) translateX(var(--orbit-inner-radius)) rotate(0deg); }
+  to { transform: rotate(-360deg) translateX(var(--orbit-inner-radius)) rotate(360deg); }
+}
+
+/* Órbita exterior - 3 avatares distribuidos */
+.avatar-1 { animation: orbit-outer var(--orbit-outer-duration) linear infinite; animation-delay: 0s; }
+.avatar-2 { animation: orbit-outer var(--orbit-outer-duration) linear infinite; animation-delay: -5s; }
+.avatar-3 { animation: orbit-outer var(--orbit-outer-duration) linear infinite; animation-delay: -10s; }
+
+/* Órbita interior - 2 avatares más pequeños */
+.avatar-4,
+.avatar-5 {
+  width: 38px;
+  height: 38px;
+  margin: -19px;
+  opacity: 0.96;
+  animation: orbit-inner var(--orbit-inner-duration) linear infinite;
+}
+
+.avatar-4 { animation-delay: 0s; }
+.avatar-5 { animation-delay: -5s; }
+
+/* ===========================================
+   FOOTER
+   =========================================== */
+.footer {
+  background: var(--color-card-bg);
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-md);
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.8fr;
+  gap: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.footer-logo img {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.footer-tagline {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  max-width: 240px;
+}
+
+/* Columnas de enlaces */
+.footer-col h4 {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col ul li a {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--color-text-primary);
+}
+
+/* Newsletter */
+.footer-newsletter p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
+}
+
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 6px 6px 6px 14px;
+  gap: var(--spacing-sm);
+}
+
+.newsletter-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.newsletter-form input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  outline: none;
+  min-width: 0;
+}
+
+.newsletter-form input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.newsletter-form button {
+  background: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 0.2s;
+}
+
+.newsletter-form button:hover {
+  opacity: 0.8;
+}
+
+/* Barra inferior */
+.footer-bottom {
+  max-width: 1100px;
+  margin: var(--spacing-md) auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+}
+
+.footer-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* ===========================================
+   ACCESIBILIDAD
+   Respeta preferencias de movimiento reducido
+   =========================================== */
+@media (prefers-reduced-motion: reduce) {
+  .avatar { animation: none; }
+  .avatar-1 { transform: translateX(118px); }
+  .avatar-2 { transform: translate(-59px, 102px); }
+  .avatar-3 { transform: translate(-59px, -102px); }
+  .avatar-4 { transform: translateX(64px); }
+  .avatar-5 { transform: translateX(-64px); }
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+@media (max-width: 900px) {
+  .affiliate-card {
+    flex-direction: column;
+    padding: 40px 32px;
+    text-align: center;
+  }
+
+  .affiliate-content { align-items: center; }
+
+  .affiliate-visual {
+    width: 260px;
+    height: 220px;
+  }
+
+  /* Reducir radios de órbita en tablet */
+  :root {
+    --orbit-outer-radius: 86px;
+    --orbit-inner-radius: 50px;
+  }
+
+  .center-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 16px;
+  }
+
+  .center-icon img,
+  .center-icon svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .avatar {
+    width: 38px;
+    height: 38px;
+    margin: -19px;
+  }
+
+  .avatar-4,
+  .avatar-5 {
+    width: 32px;
+    height: 32px;
+    margin: -16px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 580px) {
+  .affiliate-section {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+}
