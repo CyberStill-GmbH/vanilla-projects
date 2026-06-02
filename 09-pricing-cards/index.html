@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Choose your plan</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+  <section class="pricing-section">
+ 
+    <!-- Header -->
+    <div class="pricing-header">
+      <h1 class="pricing-title">Choose your plan</h1>
+      <p class="pricing-subtitle">7 Days free trial. No credit card required.</p>
+ 
+      <!-- Toggle -->
+      <div class="billing-toggle">
+        <span class="toggle-label" id="label-monthly">Bill Monthly</span>
+        <label class="toggle-switch" aria-label="Toggle billing period">
+          <input type="checkbox" id="billing-toggle-input" />
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+        </label>
+        <span class="toggle-label" id="label-yearly">Bill Yearly</span>
+      </div>
+    </div>
+ 
+    <!-- Cards -->
+    <div class="pricing-grid">
+ 
+      <!-- Free -->
+      <div class="plan-card plan-free">
+        <div class="plan-top">
+          <h2 class="plan-name">Free</h2>
+          <div class="plan-price">
+            <span class="price-amount" data-monthly="$0" data-yearly="$0">$0</span>
+            <span class="price-period">/ Month</span>
+          </div>
+        </div>
+        <div class="plan-features">
+          <ul>
+            <li><span class="check-icon">&#10003;</span> AI advisor for a day</li>
+            <li><span class="check-icon">&#10003;</span> 2 auto tracking</li>
+            <li><span class="check-icon">&#10003;</span> 7 Day transaction clearing</li>
+            <li><span class="check-icon">&#10003;</span> 24/7 Customer support</li>
+          </ul>
+        </div>
+        <div class="plan-footer">
+          <button class="btn btn-ghost">Purchase Plan</button>
+        </div>
+      </div>
+ 
+      <!-- Premium -->
+      <div class="plan-card plan-premium">
+        <div class="plan-top">
+          <h2 class="plan-name">
+            Premium
+            <span class="badge">Popular</span>
+          </h2>
+          <div class="plan-price">
+            <span class="price-amount" data-monthly="$150" data-yearly="$120">$150</span>
+            <span class="price-period">/ Month</span>
+          </div>
+        </div>
+        <div class="plan-features">
+          <ul>
+            <li><span class="check-icon">&#10003;</span> AI advisor full time</li>
+            <li><span class="check-icon">&#10003;</span> Unlimited auto tracking</li>
+            <li><span class="check-icon">&#10003;</span> 1 Day transaction clearing</li>
+            <li><span class="check-icon">&#10003;</span> Priority customer support</li>
+          </ul>
+        </div>
+        <div class="plan-footer">
+          <button class="btn btn-primary">Purchase Plan</button>
+        </div>
+      </div>
+ 
+      <!-- Enterprise -->
+      <div class="plan-card plan-enterprise">
+        <div class="plan-top">
+          <h2 class="plan-name">Enterprise</h2>
+          <div class="plan-price">
+            <span class="price-amount" data-monthly="$180" data-yearly="$150">$180</span>
+            <span class="price-period">/ Month</span>
+          </div>
+        </div>
+        <div class="plan-features">
+          <ul>
+            <li><span class="check-icon">&#10003;</span> AI advisor full time</li>
+            <li><span class="check-icon">&#10003;</span> Unlimited auto tracking</li>
+            <li><span class="check-icon">&#10003;</span> 1 Day transaction clearing</li>
+            <li><span class="check-icon">&#10003;</span> Priority customer support</li>
+          </ul>
+        </div>
+        <div class="plan-footer">
+          <button class="btn btn-ghost">Purchase Plan</button>
+        </div>
+      </div>
+ 
+    </div>
+  </section>
+ 
+  <script src="./script.js"></script>
+</body>
+</html>
