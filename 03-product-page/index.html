@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>03-Product Page</title>
+</head>
+<body>
+
+  <header>
+    <h1>🦀 The Rustacean Shelf</h1>
+    <p><em>Curated books for every stage of your Rust journey.</em></p>
+    <nav>
+      <strong>Jump to:</strong>
+      <a href="#beginner">Beginner</a> |
+      <a href="#intermediate">Intermediate</a> |
+      <a href="#advanced">Advanced</a> |
+      <a href="#glossary">Glossary</a> |
+      <a href="#comparison">Comparison Table</a>
+    </nav>
+    <hr />
+  </header>
+
+  <main>
+
+    <section id="beginner">
+      <h2> Beginner</h2>
+      <p>Start here if you are new to Rust or coming from a high-level language.</p>
+
+      <article>
+        <h3>The Rust Programming Language</h3>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Rust_programming_language_black_logo.svg/320px-Rust_programming_language_black_logo.svg.png"
+          alt="Rust programming language logo — a bold black letter R with a gear-like border"
+          width="80"
+        />
+        <p>
+          Written by <strong>Steve Klabnik</strong> and <strong>Carol Nichols</strong>,
+          this is the official Rust book — affectionately known as <em>"The Book"</em>
+          among the community. Available free online and in print.
+        </p>
+
+        <dl>
+          <dt>Authors</dt>
+          <dd>Steve Klabnik &amp; Carol Nichols</dd>
+
+          <dt>Level</dt>
+          <dd>Beginner</dd>
+
+          <dt>Topics covered</dt>
+          <dd>Ownership, borrowing, lifetimes, structs, enums, error handling, traits, iterators</dd>
+
+          <dt>Format</dt>
+          <dd>Free online at <a href="https://doc.rust-lang.org/book/" target="_blank">doc.rust-lang.org/book</a> · Print via No Starch Press</dd>
+
+          <dt>Best for</dt>
+          <dd>Anyone starting from scratch with Rust</dd>
+        </dl>
+      </article>
+
+      <hr />
+
+      <article>
+        <h3>Rust in Action</h3>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/WebAssembly_Logo.svg/240px-WebAssembly_Logo.svg.png"
+          alt="WebAssembly logo, a stylized W in blue, often paired with Rust systems topics"
+          width="80"
+        />
+        <p>
+          By <strong>Tim McNamara</strong>. A hands-on introduction that teaches Rust through
+          practical projects: building a clock, a CPU emulator, and a file parser.
+          Ideal for programmers who learn better by <em>doing</em> than by reading theory.
+        </p>
+
+        <dl>
+          <dt>Author</dt>
+          <dd>Tim McNamara</dd>
+
+          <dt>Level</dt>
+          <dd>Beginner to Intermediate</dd>
+
+          <dt>Topics covered</dt>
+          <dd>Memory management, file I/O, networking, concurrency, systems internals</dd>
+
+          <dt>Format</dt>
+          <dd>Print &amp; eBook via Manning Publications</dd>
+
+          <dt>Best for</dt>
+          <dd>Programmers coming from Python, Ruby, or JavaScript who want systems-level skills</dd>
+        </dl>
+      </article>
+    </section>
+
+    <hr />
+
+    <section id="intermediate">
+      <h2> Intermediate</h2>
+      <p>For developers comfortable with basic Rust who want to go deeper.</p>
+
+      <article>
+        <h3>Programming Rust</h3>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Original_Ferris.svg/320px-Original_Ferris.svg.png"
+          alt="Ferris the crab, the unofficial mascot of the Rust programming language, a friendly orange crab"
+          width="80"
+        />
+        <p>
+          By <strong>Jim Blandy</strong>, <strong>Jason Orendorff</strong>, and
+          <strong>Leonora F. S. Tindall</strong>. Often described as the most thorough
+          Rust reference available. Goes deep into the type system, traits, and
+          concurrency model. Not a quick read — but worth every page.
+        </p>
+
+        <dl>
+          <dt>Authors</dt>
+          <dd>Jim Blandy, Jason Orendorff, Leonora F. S. Tindall</dd>
+
+          <dt>Level</dt>
+          <dd>Intermediate</dd>
+
+          <dt>Topics covered</dt>
+          <dd>Closures, iterators, async/await, unsafe Rust, FFI, macros</dd>
+
+          <dt>Format</dt>
+          <dd>Print &amp; eBook via O'Reilly Media</dd>
+
+          <dt>Best for</dt>
+          <dd>Developers who have read The Book and want a complete reference</dd>
+        </dl>
+      </article>
+
+      <hr />
+
+      <article>
+        <h3>Zero To Production In Rust</h3>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Axum_logo.svg/240px-Axum_logo.svg.png"
+          alt="Axum web framework logo"
+          width="80"
+          onerror="this.alt='Cover not available'; this.removeAttribute('src')"
+        />
+        <p>
+          By <strong>Luca Palmieri</strong>. The definitive guide to building production-grade
+          web applications in Rust. Covers the full lifecycle: project structure, testing,
+          databases, authentication, observability. Uses <em>Actix-web</em> and real-world
+          patterns throughout.
+        </p>
+
+        <dl>
+          <dt>Author</dt>
+          <dd>Luca Palmieri</dd>
+
+          <dt>Level</dt>
+          <dd>Intermediate</dd>
+
+          <dt>Topics covered</dt>
+          <dd>REST APIs, PostgreSQL with SQLx, Docker, telemetry, CI/CD, error handling at scale</dd>
+
+          <dt>Format</dt>
+          <dd>Available at <a href="https://www.zero2prod.com" target="_blank">zero2prod.com</a></dd>
+
+          <dt>Best for</dt>
+          <dd>Backend developers who want to ship real Rust services</dd>
+        </dl>
+      </article>
+    </section>
+
+    <hr />
+
+    <section id="advanced">
+      <h2> Advanced</h2>
+      <p>For experienced Rust programmers ready to master the hard parts.</p>
+
+      <article>
+        <h3>Rust for Rustaceans</h3>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Original_Ferris.svg/320px-Original_Ferris.svg.png"
+          alt="Ferris the Rust crab mascot waving, representing advanced Rust community knowledge"
+          width="80"
+        />
+        <p>
+          By <strong>Jon Gjengset</strong>. Picks up exactly where The Book leaves off.
+          Explores the <em>why</em> behind Rust's design — advanced lifetimes, trait objects,
+          interior mutability, async internals, and API design. If The Book is a map,
+          this is the terrain.
+        </p>
+
+        <dl>
+          <dt>Author</dt>
+          <dd>Jon Gjengset</dd>
+
+          <dt>Level</dt>
+          <dd>Advanced</dd>
+
+          <dt>Topics covered</dt>
+          <dd>Advanced traits, unsafe patterns, lock-free concurrency, macro design, pinning</dd>
+
+          <dt>Format</dt>
+          <dd>Print &amp; eBook via No Starch Press</dd>
+
+          <dt>Best for</dt>
+          <dd>Rustaceans who want to understand the language at a deep, principled level</dd>
+        </dl>
+      </article>
+    </section>
+
+    <hr />
+
+    <!-- ===================== COMPARISON TABLE ===================== -->
+    <section id="comparison">
+      <h2> Book Comparison Table</h2>
+      <p>A quick side-by-side of all featured books.</p>
+
+      <table border="1" cellpadding="8" cellspacing="0">
+        <caption><strong>Rust Books — At a Glance</strong></caption>
+        <thead>
+          <tr>
+            <th scope="col">Title</th>
+            <th scope="col">Author(s)</th>
+            <th scope="col">Level</th>
+            <th scope="col">Focus</th>
+            <th scope="col">Free?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><em>The Rust Programming Language</em></td>
+            <td>Klabnik &amp; Nichols</td>
+            <td>Beginner</td>
+            <td>Language fundamentals</td>
+            <td> Yes</td>
+          </tr>
+          <tr>
+            <td><em>Rust in Action</em></td>
+            <td>Tim McNamara</td>
+            <td>Beginner–Intermediate</td>
+            <td>Systems projects</td>
+            <td>❌ Paid</td>
+          </tr>
+          <tr>
+            <td><em>Programming Rust</em></td>
+            <td>Blandy, Orendorff, Tindall</td>
+            <td>Intermediate</td>
+            <td>Comprehensive reference</td>
+            <td>❌ Paid</td>
+          </tr>
+          <tr>
+            <td><em>Zero To Production In Rust</em></td>
+            <td>Luca Palmieri</td>
+            <td>Intermediate</td>
+            <td>Web backend &amp; production</td>
+            <td>❌ Paid</td>
+          </tr>
+          <tr>
+            <td><em>Rust for Rustaceans</em></td>
+            <td>Jon Gjengset</td>
+            <td>Advanced</td>
+            <td>Deep language internals</td>
+            <td>❌ Paid</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr />
+    
+    <section id="glossary">
+      <h2> Glossary of Key Rust Terms</h2>
+      <p>Common terms you will encounter across these books.</p>
+
+      <dl>
+        <dt><strong>Ownership</strong></dt>
+        <dd>
+          Rust's core memory model. Every value has a single owner; when that owner
+          goes out of scope, the value is dropped automatically.
+        </dd>
+
+        <dt><strong>Borrow Checker</strong></dt>
+        <dd>
+          The compiler component that enforces ownership and borrowing rules at compile time,
+          preventing dangling pointers and data races without a garbage collector.
+        </dd>
+
+        <dt><strong>Lifetime</strong></dt>
+        <dd>
+          A named scope that describes how long a reference is valid. Written as
+          <code>'a</code>, <code>'b</code>, etc. Usually inferred, sometimes annotated.
+        </dd>
+
+        <dt><strong>Trait</strong></dt>
+        <dd>
+          Rust's abstraction mechanism, similar to interfaces in other languages.
+          Defines shared behavior that types can implement.
+        </dd>
+
+        <dt><strong>Crate</strong></dt>
+        <dd>
+          The basic compilation unit in Rust. A crate can be a binary (executable)
+          or a library. Dependencies are managed via <a href="https://crates.io" target="_blank">crates.io</a>.
+        </dd>
+
+        <dt><strong>Unsafe</strong></dt>
+        <dd>
+          A keyword that opens a block where the programmer takes manual responsibility
+          for memory safety, bypassing some borrow checker guarantees.
+        </dd>
+
+        <dt><strong>Ferris</strong></dt>
+        <dd>
+          The unofficial mascot of the Rust community — a happy orange crab.
+          Often used to indicate beginner-friendly content (<em>"is this written for Ferris?"</em>).
+        </dd>
+      </dl>
+    </section>
+
+  </main>
+
+  <hr />
+  <footer>
+    <p>
+      <a href="#beginner">↑ Beginner</a> |
+      <a href="#intermediate">↑ Intermediate</a> |
+      <a href="#advanced">↑ Advanced</a> |
+      <a href="#glossary">↑ Glossary</a> |
+      <a href="#comparison">↑ Table</a>
+    </p>
+    <p><small>&copy; 2026 The Rustacean Shelf &mdash; All book descriptions are editorial summaries for informational purposes.</small></p>
+  </footer>
+
+</body>
+</html>
