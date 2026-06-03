@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crabkit — Offensive Security Framework</title>
+    <link rel="icon" href="./assets/logo.png" type="image/png" sizes="fit">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+    <!-- NAVBAR (sin tocar ids) -->
+    <header class="navbar">
+        <div class="navbar__container">
+            <a href="#" class="navbar__brand">
+                <img src="./assets/logo.png" alt="Crabkit" class="navbar__logo">Crabkit
+            </a>
+            <button class="navbar__toggle" id="navbarToggle" aria-label="Toggle navigation" aria-controls="navbarMenu" aria-expanded="false">
+                <span class="bar"></span><span class="barIzp"></span><span class="bar"></span>
+            </button>
+            <nav id="navbarMenu" class="navbar__menu" role="navigation" aria-labelledby="navbarToggle">
+                <ul class="navbar__list">
+                    <li class="navbar__item"><a href="#overview" class="navbar__link">Overview</a></li>
+                    <li class="navbar__item"><a href="#architecture" class="navbar__link">Architecture</a></li>
+                    <li class="navbar__item"><a href="#install" class="navbar__link">Install</a></li>
+                    <li class="navbar__item navbar__item--cta"><a href="#usage" class="navbar__link navbar__link--cta">Usage</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="overview">
+        <div class="hero__noise"></div>
+        <div class="container">
+            <div class="hero__badge">
+                <span class="badge badge--rust">Rust 1.70+</span>
+                <span class="badge badge--async">Tokio Async</span>
+                <span class="badge badge--auth">Authorized Use Only</span>
+            </div>
+            <h1 class="hero__title">Fast. Controlled.<br><em>Memory-safe.</em></h1>
+            <p class="hero__sub">High-performance offensive security framework built for authorized reconnaissance, endpoint discovery, and tactical fuzzing. Engineered where throughput and memory safety matter.</p>
+            <div class="hero__actions">
+                <a href="#install" class="btn btn--primary">Get started</a>
+                <a href="https://github.com/CyberStill-GmbH/crabkit" class="btn btn--ghost" target="_blank" rel="noopener">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <div class="hero__terminal">
+                <div class="terminal__header">
+                    <span class="dot dot--red"></span>
+                    <span class="dot dot--yellow"></span>
+                    <span class="dot dot--green"></span>
+                    <span class="terminal__title">crabkit</span>
+                </div>
+                <pre class="terminal__body"><code><span class="t-dim">$</span> crabkit \
+  <span class="t-flag">--target</span> https://api.internal.example \
+  <span class="t-flag">--wordlist</span> ./wordlists/endpoints.txt \
+  <span class="t-flag">--concurrency</span> 80 \
+  <span class="t-flag">--filter-status</span> 200,204,301
+
+<span class="t-ok">[200]</span> /api/v1/users         <span class="t-dim">42ms   1842 bytes</span>
+<span class="t-warn">[403]</span> /admin               <span class="t-dim">51ms    721 bytes</span>
+<span class="t-redir">[301]</span> /dashboard           <span class="t-dim">38ms    128 bytes</span></code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRINCIPLES -->
+    <section class="section section--alt" id="principles">
+        <div class="container">
+            <h2 class="section__title">Core principles</h2>
+            <p class="section__lead">Built around one engineering principle: do more work with less overhead, without sacrificing control.</p>
+            <div class="grid grid--3">
+                <div class="card card--principle">
+                    <div class="card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Memory Safety</h3>
+                    <p>Rust's ownership model eliminates entire classes of memory-related bugs at compile time.</p>
+                </div>
+                <div class="card card--principle">
+                    <div class="card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>Predictable Perf</h3>
+                    <p>No GC pauses. Tighter control over allocations and a deterministic async runtime.</p>
+                </div>
+                <div class="card card--principle">
+                    <div class="card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    </div>
+                    <h3>Async-first</h3>
+                    <p>Tokio-powered task scheduling for maximum network throughput with semaphore-based backpressure.</p>
+                </div>
+                <div class="card card--principle">
+                    <div class="card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                    </div>
+                    <h3>Streaming IO</h3>
+                    <p>Wordlists processed incrementally via <code>BufReader</code>, supporting large files without loading them fully into RAM.</p>
+                </div>
+                <div class="card card--principle">
+                    <div class="card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h3>Typed Errors</h3>
+                    <p>Explicit error propagation using Rust's type system. Silent failures are not an option.</p>
+                </div>
+                <div class="card card--principle">
+                    <div class="card__icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h3>CLI-first</h3>
+                    <p>Designed for fast operational workflows. Pipeline-friendly JSON output included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="section" id="architecture">
+        <div class="container">
+            <h2 class="section__title">System architecture</h2>
+            <p class="section__lead">Modular by design — each tactical capability can evolve independently.</p>
+
+            <div class="arch-flow">
+                <div class="arch-flow__step">
+                    <div class="arch-flow__icon arch-flow__icon--io">IO</div>
+                    <span>Wordlist Stream</span>
+                </div>
+                <div class="arch-flow__arrow">→</div>
+                <div class="arch-flow__step">
+                    <div class="arch-flow__icon arch-flow__icon--core">⚙</div>
+                    <span>Task Scheduler</span>
+                </div>
+                <div class="arch-flow__arrow">→</div>
+                <div class="arch-flow__step">
+                    <div class="arch-flow__icon arch-flow__icon--sem">⊕</div>
+                    <span>Semaphore</span>
+                </div>
+                <div class="arch-flow__arrow">→</div>
+                <div class="arch-flow__step">
+                    <div class="arch-flow__icon arch-flow__icon--net">⇄</div>
+                    <span>HTTP Client</span>
+                </div>
+                <div class="arch-flow__arrow">→</div>
+                <div class="arch-flow__step">
+                    <div class="arch-flow__icon arch-flow__icon--out">✓</div>
+                    <span>Reporter</span>
+                </div>
+            </div>
+
+            <div class="modules">
+                <div class="module">
+                    <div class="module__path"><code>src/core/engine.rs</code></div>
+                    <h3>Core::Engine</h3>
+                    <p>Request orchestration, concurrency control, retries, and execution flow. Powered by Tokio runtime.</p>
+                </div>
+                <div class="module">
+                    <div class="module__path"><code>src/net/client.rs</code></div>
+                    <h3>Net::Client</h3>
+                    <p>HTTP/S transport abstraction and configuration. Built on Reqwest with timeout and retry policies.</p>
+                </div>
+                <div class="module">
+                    <div class="module__path"><code>src/io/streamer.rs</code></div>
+                    <h3>IO::Streamer</h3>
+                    <p>High-performance wordlist reader using <code>BufReader</code> for incremental, low-RAM processing.</p>
+                </div>
+                <div class="module">
+                    <div class="module__path"><code>src/logic/mutator.rs</code></div>
+                    <h3>Logic::Mutator</h3>
+                    <p>Payload generation and mutation logic. Produces candidate paths and controlled variant sets.</p>
+                </div>
+                <div class="module">
+                    <div class="module__path"><code>src/output/reporter.rs</code></div>
+                    <h3>Output::Reporter</h3>
+                    <p>Normalizes results for terminal and machine-readable JSON output via stdout.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTALL -->
+    <section class="section section--alt" id="install">
+        <div class="container">
+            <h2 class="section__title">Installation</h2>
+            <p class="section__lead">Requires Rust stable 1.70+ and Cargo. Works on Linux, macOS, and Windows.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step__num">01</div>
+                    <div class="step__body">
+                        <h3>Clone the repository</h3>
+                        <div class="code-block">
+                            <button class="code-block__copy" aria-label="Copy code">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            </button>
+                            <pre><code>git clone https://github.com/CyberStill-GmbH/crabkit.git
+cd crabkit</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step__num">02</div>
+                    <div class="step__body">
+                        <h3>Build optimized release</h3>
+                        <div class="code-block">
+                            <button class="code-block__copy" aria-label="Copy code">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            </button>
+                            <pre><code>cargo build --release</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step__num">03</div>
+                    <div class="step__body">
+                        <h3>Install as global CLI</h3>
+                        <div class="code-block">
+                            <button class="code-block__copy" aria-label="Copy code">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            </button>
+                            <pre><code>cargo install --path .
+crabkit --help</code></pre>
+                        </div>
+                        <p class="step__note">If the command isn't found, ensure <code>$HOME/.cargo/bin</code> is in your PATH.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USAGE -->
+    <section class="section" id="usage">
+        <div class="container">
+            <h2 class="section__title">Usage</h2>
+            <p class="section__lead">CLI-first. Every flag is intentional.</p>
+
+            <div class="flags-table-wrap">
+                <table class="flags-table">
+                    <thead>
+                        <tr>
+                            <th>Flag</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>--target</code></td><td>URL</td><td>Base URL to probe</td></tr>
+                        <tr><td><code>--wordlist</code></td><td>PATH</td><td>Path to wordlist file</td></tr>
+                        <tr><td><code>--concurrency</code></td><td>INT</td><td>Max parallel tasks</td></tr>
+                        <tr><td><code>--timeout</code></td><td>INT</td><td>Request timeout in seconds</td></tr>
+                        <tr><td><code>--retries</code></td><td>INT</td><td>Retry count on unstable responses</td></tr>
+                        <tr><td><code>--filter-status</code></td><td>LIST</td><td>Comma-separated status codes to include</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="subsection-title">Full example</h3>
+            <div class="code-block">
+                <button class="code-block__copy" aria-label="Copy code">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+                <pre><code>crabkit \
+  --target https://api.internal.example \
+  --wordlist ./wordlists/endpoints.txt \
+  --concurrency 80 \
+  --timeout 5 \
+  --retries 2 \
+  --filter-status 200,204,301,302,403</code></pre>
+            </div>
+
+            <h3 class="subsection-title">JSON output</h3>
+            <div class="code-block code-block--json">
+                <pre><code>{
+  "target": "https://api.internal.example",
+  "path": "/api/v1/users",
+  "status": 200,
+  "latency_ms": 42,
+  "content_length": 1842
+}</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section section--alt" id="roadmap">
+        <div class="container">
+            <h2 class="section__title">Roadmap</h2>
+            <div class="roadmap">
+                <div class="roadmap__item roadmap__item--done">
+                    <div class="roadmap__badge">Phase 01 — Done</div>
+                    <h3>Core Engine</h3>
+                    <ul>
+                        <li>Async execution engine</li>
+                        <li>Semaphore concurrency control</li>
+                        <li>Streaming wordlist reader</li>
+                        <li>HTTP/S probing + filtering</li>
+                    </ul>
+                </div>
+                <div class="roadmap__item roadmap__item--active">
+                    <div class="roadmap__badge">Phase 02 — In Dev</div>
+                    <h3>Tactical Fuzzing Layer</h3>
+                    <ul>
+                        <li>Controlled payload mutation</li>
+                        <li>Bit-level mutation primitives</li>
+                        <li>Latency anomaly detection</li>
+                        <li>Structured JSON export</li>
+                    </ul>
+                </div>
+                <div class="roadmap__item roadmap__item--planned">
+                    <div class="roadmap__badge">Phase 03 — Planned</div>
+                    <h3>Cloud-Aware Recon</h3>
+                    <ul>
+                        <li>AWS S3 bucket enumeration</li>
+                        <li>Lambda proxy support</li>
+                        <li>Result aggregation layer</li>
+                    </ul>
+                </div>
+                <div class="roadmap__item roadmap__item--planned">
+                    <div class="roadmap__badge">Phase 04 — Planned</div>
+                    <h3>Detection & Reporting</h3>
+                    <ul>
+                        <li>HTML report generation</li>
+                        <li>Baseline comparison</li>
+                        <li>Noise reduction heuristics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ETHICS -->
+    <section class="section" id="ethics">
+        <div class="container">
+            <div class="ethics-banner">
+                <div class="ethics-banner__icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                    <h2>Authorized use only</h2>
+                    <p>Crabkit must only be used in environments where <strong>explicit authorization</strong> has been granted. Acceptable use includes internal security assessments, authorized penetration testing, bug bounty programs within scope, and educational labs. The author assumes no responsibility for misuse.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                <span class="navbar__brand">Crabkit</span>
+                <span class="footer__license">MIT License · CyberStill GmbH</span>
+            </div>
+            <div class="footer__links">
+                <a href="https://github.com/CyberStill-GmbH/crabkit" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://github.com/CyberStill-GmbH/crabkit/blob/main/LICENSE.md" target="_blank" rel="noopener">License</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
