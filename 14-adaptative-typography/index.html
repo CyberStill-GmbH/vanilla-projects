@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adaptive Typography</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav">
+    <span class="nav-brand">Typography</span>
+    <ul class="nav-links">
+      <li><a href="#clamp">clamp()</a></li>
+      <li><a href="#calc">calc()</a></li>
+      <li><a href="#viewport">Viewport</a></li>
+      <li><a href="#showcase">Showcase</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Adaptive Typography</p>
+      <h1 class="hero-title">Type<br><em>that moves</em><br>with you.</h1>
+      <p class="hero-desc">
+        Fluid font sizing using <code>clamp()</code>, <code>calc()</code>, and viewport units.
+        No breakpoints. Pure CSS.
+      </p>
+    </div>
+    <div class="hero-rule"></div>
+  </header>
+
+  <!-- SECTION 1: clamp() -->
+  <section class="section" id="clamp">
+    <div class="section-label">01 — clamp()</div>
+
+    <div class="split">
+      <div class="split-text">
+        <h2 class="section-heading">Three values.<br>One smooth range.</h2>
+        <p class="body-copy">
+          The <code>clamp(min, preferred, max)</code> function constrains a value between a minimum and maximum, 
+          with a preferred middle value that scales fluidly.
+        </p>
+        <p class="body-copy">
+          For typography, this means you set a smallest acceptable size, a largest comfortable size, 
+          and a fluid preferred value tied to the viewport. The browser handles everything in between.
+        </p>
+      </div>
+      <div class="split-demo">
+        <div class="clamp-demo-card">
+          <div class="clamp-diagram">
+            <div class="clamp-rail">
+              <div class="clamp-zone clamp-zone--min">
+                <span>min</span>
+                <strong>1rem</strong>
+              </div>
+              <div class="clamp-zone clamp-zone--fluid">
+                <span>preferred</span>
+                <strong>2.5vw</strong>
+              </div>
+              <div class="clamp-zone clamp-zone--max">
+                <span>max</span>
+                <strong>3rem</strong>
+              </div>
+            </div>
+          </div>
+          <code class="demo-code">font-size: clamp(1rem, 2.5vw, 3rem);</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="clamp-examples">
+      <div class="clamp-row">
+        <span class="clamp-label">Display</span>
+        <p class="type-display-example">Hello World</p>
+        <code>clamp(2.5rem, 8vw, 7rem)</code>
+      </div>
+      <div class="clamp-row">
+        <span class="clamp-label">Heading</span>
+        <p class="type-heading-example">Hello World</p>
+        <code>clamp(1.5rem, 4vw, 3.5rem)</code>
+      </div>
+      <div class="clamp-row">
+        <span class="clamp-label">Subheading</span>
+        <p class="type-sub-example">Hello World</p>
+        <code>clamp(1.1rem, 2.5vw, 2rem)</code>
+      </div>
+      <div class="clamp-row">
+        <span class="clamp-label">Body</span>
+        <p class="type-body-example">Hello World — the quick brown fox</p>
+        <code>clamp(0.9rem, 1.2vw, 1.125rem)</code>
+      </div>
+      <div class="clamp-row">
+        <span class="clamp-label">Caption</span>
+        <p class="type-caption-example">A small label or caption text here</p>
+        <code>clamp(0.7rem, 1vw, 0.875rem)</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: calc() -->
+  <section class="section section--ink" id="calc">
+    <div class="section-label section-label--light">02 — calc()</div>
+
+    <div class="split">
+      <div class="split-text">
+        <h2 class="section-heading section-heading--light">Math in your stylesheet.</h2>
+        <p class="body-copy body-copy--light">
+          <code>calc()</code> lets you mix units in a mathematical expression. 
+          For fluid typography, it's used to define a linear scale between two sizes across a viewport range.
+        </p>
+        <p class="body-copy body-copy--light">
+          The formula calculates how much the font should grow per pixel of viewport width, 
+          creating a straight line interpolation between your minimum and maximum sizes.
+        </p>
+      </div>
+      <div class="split-demo">
+        <div class="calc-formula-card">
+          <p class="formula-label">Fluid font scale formula</p>
+          <div class="formula-block">
+            <span class="formula-line">font-size: calc(</span>
+            <span class="formula-line formula-indent"><span class="formula-val formula-val--a">16px</span> + (<span class="formula-val formula-val--b">24</span> - <span class="formula-val formula-val--a">16</span>)</span>
+            <span class="formula-line formula-indent">* (100vw - <span class="formula-val formula-val--c">320px</span>)</span>
+            <span class="formula-line formula-indent">/ (<span class="formula-val formula-val--d">1280px</span> - <span class="formula-val formula-val--c">320px</span>)</span>
+            <span class="formula-line">);</span>
+          </div>
+          <ul class="formula-legend">
+            <li><span class="dot dot--a"></span><strong>16px</strong> — min font size</li>
+            <li><span class="dot dot--b"></span><strong>24</strong> — max font size (unitless)</li>
+            <li><span class="dot dot--c"></span><strong>320px</strong> — min viewport</li>
+            <li><span class="dot dot--d"></span><strong>1280px</strong> — max viewport</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-examples-grid">
+      <div class="calc-card">
+        <p class="calc-card-size" style="font-size: calc(14px + (18 - 14) * (100vw - 320px) / (1280 - 320))">
+          Paragraph text
+        </p>
+        <code>calc(14px + (18 - 14) * …)</code>
+        <span class="calc-range">14px → 18px</span>
+      </div>
+      <div class="calc-card">
+        <p class="calc-card-size" style="font-size: calc(20px + (36 - 20) * (100vw - 320px) / (1280 - 320))">
+          Section title
+        </p>
+        <code>calc(20px + (36 - 20) * …)</code>
+        <span class="calc-range">20px → 36px</span>
+      </div>
+      <div class="calc-card">
+        <p class="calc-card-size" style="font-size: calc(32px + (72 - 32) * (100vw - 320px) / (1280 - 320))">
+          Big display
+        </p>
+        <code>calc(32px + (72 - 32) * …)</code>
+        <span class="calc-range">32px → 72px</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: Viewport Units -->
+  <section class="section" id="viewport">
+    <div class="section-label">03 — Viewport Units</div>
+
+    <h2 class="section-heading">vw, vh, vmin, vmax</h2>
+    <p class="body-copy section-intro-text">
+      Viewport units let type scale directly with the browser window. While powerful, pure viewport units have no minimum 
+      or maximum — a heading sized at <code>5vw</code> becomes unreadably small on mobile. 
+      That's why they're best combined with <code>clamp()</code> or used sparingly for decorative type.
+    </p>
+
+    <div class="vp-grid">
+      <div class="vp-card">
+        <div class="vp-demo">
+          <span class="vp-text vp-text--vw">Ag</span>
+        </div>
+        <div class="vp-info">
+          <strong>vw</strong>
+          <p>1% of viewport <em>width</em>. Grows horizontally.</p>
+          <code>font-size: 5vw</code>
+        </div>
+      </div>
+      <div class="vp-card">
+        <div class="vp-demo">
+          <span class="vp-text vp-text--vh">Ag</span>
+        </div>
+        <div class="vp-info">
+          <strong>vh</strong>
+          <p>1% of viewport <em>height</em>. Rare for body text.</p>
+          <code>font-size: 5vh</code>
+        </div>
+      </div>
+      <div class="vp-card">
+        <div class="vp-demo">
+          <span class="vp-text vp-text--vmin">Ag</span>
+        </div>
+        <div class="vp-info">
+          <strong>vmin</strong>
+          <p>1% of the <em>smaller</em> viewport dimension.</p>
+          <code>font-size: 5vmin</code>
+        </div>
+      </div>
+      <div class="vp-card">
+        <div class="vp-demo">
+          <span class="vp-text vp-text--vmax">Ag</span>
+        </div>
+        <div class="vp-info">
+          <strong>vmax</strong>
+          <p>1% of the <em>larger</em> viewport dimension.</p>
+          <code>font-size: 5vmax</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="vp-warning">
+      <span class="warning-icon">⚠</span>
+      <div>
+        <strong>Accessibility note:</strong> Pure viewport units don't respect user browser font size preferences. 
+        Always combine them with relative units or use <code>clamp()</code> with rem-based min/max values.
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: Full Showcase -->
+  <section class="showcase" id="showcase">
+    <div class="showcase-inner">
+      <p class="showcase-overline">Putting it all together</p>
+      <h2 class="showcase-title">A&nbsp;typographic system<br>built for every screen.</h2>
+      <p class="showcase-lead">
+        When <code>clamp()</code>, <code>calc()</code>, and viewport units work together, 
+        you get a type scale that breathes — always readable, never fixed.
+      </p>
+
+      <div class="showcase-scale">
+        <div class="scale-row" data-size="xs">
+          <span class="scale-label">Caption</span>
+          <p class="scale-text scale-text--xs">The quick brown fox jumps over the lazy dog</p>
+          <span class="scale-meta">clamp(0.7rem, 1vw, 0.875rem)</span>
+        </div>
+        <div class="scale-row" data-size="sm">
+          <span class="scale-label">Body</span>
+          <p class="scale-text scale-text--sm">The quick brown fox jumps over the lazy dog</p>
+          <span class="scale-meta">clamp(0.9rem, 1.2vw, 1.125rem)</span>
+        </div>
+        <div class="scale-row" data-size="md">
+          <span class="scale-label">Lead</span>
+          <p class="scale-text scale-text--md">The quick brown fox jumps over</p>
+          <span class="scale-meta">clamp(1.1rem, 2vw, 1.5rem)</span>
+        </div>
+        <div class="scale-row" data-size="lg">
+          <span class="scale-label">Subheading</span>
+          <p class="scale-text scale-text--lg">The quick brown fox</p>
+          <span class="scale-meta">clamp(1.5rem, 3vw, 2.5rem)</span>
+        </div>
+        <div class="scale-row" data-size="xl">
+          <span class="scale-label">Heading</span>
+          <p class="scale-text scale-text--xl">Quick fox</p>
+          <span class="scale-meta">clamp(2rem, 5vw, 4rem)</span>
+        </div>
+        <div class="scale-row" data-size="2xl">
+          <span class="scale-label">Display</span>
+          <p class="scale-text scale-text--2xl">Fox</p>
+          <span class="scale-meta">clamp(3rem, 10vw, 8rem)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE DEMO -->
+  <article class="article-demo">
+    <div class="article-inner">
+      <p class="article-tag">Live Example</p>
+      <h2 class="article-title">How fluid typography changed the web</h2>
+      <p class="article-meta">By the CSS Grid era · 5 min read</p>
+      <p class="article-lead">
+        For years, responsive typography meant writing separate font sizes for each breakpoint. 
+        Today, a single declaration can handle every screen size gracefully.
+      </p>
+      <p class="article-body">
+        The introduction of <code>clamp()</code> in modern browsers marked a turning point. 
+        Instead of defining type at 16px on mobile, then overriding it at 18px on tablet, 
+        then 20px on desktop — you define a range, and the browser interpolates smoothly.
+      </p>
+      <p class="article-body">
+        Combined with <code>calc()</code> for precise linear interpolation and viewport units 
+        for display headings, designers now have the tools to build type systems that feel 
+        intentional at any size — from a 320px phone to a 2560px monitor.
+      </p>
+      <blockquote class="article-quote">
+        "Good typography is invisible. Fluid typography is effortless."
+      </blockquote>
+    </div>
+  </article>
+
+  <footer class="site-footer">
+    <p>Project 14 — Adaptive Typography · <code>clamp()</code> · <code>calc()</code> · Viewport Units</p>
+  </footer>
+
+</body>
+</html>
