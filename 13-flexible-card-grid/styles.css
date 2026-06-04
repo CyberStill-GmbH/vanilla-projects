@@ -1,0 +1,427 @@
+/* ============================
+   CSS VARIABLES
+   I choose a dark theme for this one
+   it feels tech hahhaha
+   ============================ */
+:root {
+  --clr-bg: #0d0d0d;
+  --clr-surface: #161616;
+  --clr-surface-2: #1e1e1e;
+  --clr-border: #2a2a2a;
+  --clr-accent: #e8ff47;
+  --clr-accent-2: #ff6b35;
+  --clr-text: #f0f0f0;
+  --clr-text-muted: #888;
+  --clr-dark-surface: #0a0a0a;
+
+  --font-display: 'Bebas Neue', cursive;
+  --font-body: 'DM Sans', sans-serif;
+
+  --radius: 0.75rem;
+  --radius-sm: 0.375rem;
+  --gap: 1.25rem;
+  --section-pad: 5rem 2rem;
+}
+
+/* ============================
+   RESET & BASE
+   ============================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+  background: var(--clr-border);
+  color: var(--clr-accent);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+/* ============================
+   HEADER
+   ============================ */
+.site-header {
+  position: relative;
+  padding: 6rem 2rem 5rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--clr-border);
+}
+
+.header-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.header-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--clr-accent);
+  margin-bottom: 1rem;
+}
+
+.header-title {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 12vw, 9rem);
+  line-height: 0.9;
+  color: var(--clr-text);
+  margin-bottom: 1.5rem;
+}
+
+.header-title span {
+  color: var(--clr-accent);
+  -webkit-text-stroke: 0px;
+}
+
+.header-sub {
+  font-size: 1rem;
+  color: var(--clr-text-muted);
+  max-width: 400px;
+}
+
+/* Decorative grid background */
+.header-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--clr-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--clr-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.4;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 60%, transparent 100%);
+}
+
+/* ============================
+   SECTIONS
+   ============================ */
+.section {
+  padding: var(--section-pad);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section--dark {
+  background: var(--clr-dark-surface);
+  max-width: 100%;
+  padding: var(--section-pad);
+}
+
+.section--dark > * {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--clr-accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.section-desc {
+  font-size: 1rem;
+  color: var(--clr-text-muted);
+  max-width: 520px;
+}
+
+/* ============================
+   GRIDS
+   ============================ */
+
+/* Basic auto-fit grid */
+.grid--basic {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--gap);
+}
+
+/* Dense layout grid */
+.grid--dense {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--gap);
+  grid-auto-flow: dense;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Mixed units grid */
+.grid--mixed {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--gap);
+}
+
+/* ============================
+   CARDS — BASE
+   ============================ */
+.card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--clr-accent);
+  box-shadow: 0 8px 40px rgba(232, 255, 71, 0.08);
+}
+
+.card-icon {
+  font-size: 1.75rem;
+  display: block;
+  filter: grayscale(1) brightness(2);
+  transition: filter 0.2s;
+}
+
+.card:hover .card-icon { filter: none; }
+
+.card-icon--lg { font-size: 3rem; margin-bottom: 0.5rem; }
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: var(--clr-text);
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.card-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--clr-accent);
+  border: 1px solid var(--clr-accent);
+  padding: 0.25em 0.65em;
+  border-radius: 2px;
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.card-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--clr-accent-2);
+  font-weight: 500;
+}
+
+/* ============================
+   CARDS — FEATURED / DENSE
+   ============================ */
+.card--featured {
+  background: var(--clr-surface-2);
+}
+
+.card--wide {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.card--wide .card-featured-inner {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-accent-block {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--clr-accent);
+  opacity: 0.12;
+  flex-shrink: 0;
+  transition: opacity 0.3s;
+}
+
+.card-accent-block--alt {
+  background: var(--clr-accent-2);
+}
+
+.card--wide:hover .card-accent-block {
+  opacity: 0.25;
+}
+
+.card--tall {
+  grid-row: span 2;
+}
+
+/* ============================
+   UNIT CARDS
+   ============================ */
+.card--unit { background: var(--clr-surface-2); }
+
+.card-meter {
+  height: 6px;
+  background: var(--clr-border);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.card-meter-fill {
+  height: 100%;
+  background: var(--clr-accent);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+}
+
+.card-code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: var(--clr-accent);
+  background: rgba(232, 255, 71, 0.06);
+  padding: 0.5em 0.75em;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(232, 255, 71, 0.15);
+  display: block;
+  margin-top: auto;
+}
+
+/* ============================
+   UNITS SHOWCASE
+   ============================ */
+.units-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  max-width: 1200px;
+}
+
+.unit-demo {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+
+.unit-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--clr-accent);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.unit-bar {
+  display: flex;
+  gap: 0.5rem;
+  height: 48px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.unit-bar--rem { align-items: center; }
+
+.unit-fill {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #000;
+  border-radius: var(--radius-sm);
+  font-family: 'Courier New', monospace;
+}
+
+.unit-fill--40 { width: 40%; background: var(--clr-accent); }
+.unit-fill--60 { width: 60%; background: var(--clr-accent-2); }
+.unit-fill--vw { width: 30vw; background: #7c5cbf; color: var(--clr-text); font-size: 0.7rem; }
+
+.unit-box {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-family: 'Courier New', monospace;
+  color: #000;
+  border-radius: var(--radius-sm);
+  background: var(--clr-accent);
+}
+
+.unit-box--rem { width: 10rem; }
+.unit-box--sm { width: 5rem; background: var(--clr-accent-2); }
+
+.unit-note {
+  font-size: 0.85rem;
+  color: var(--clr-text-muted);
+}
+
+/* ============================
+   FOOTER
+   ============================ */
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border-top: 1px solid var(--clr-border);
+  font-size: 0.8rem;
+  color: var(--clr-text-muted);
+}
+
+/* ============================
+   RESPONSIVE ADJUSTMENTS
+   ============================ */
+@media (max-width: 600px) {
+  .card--wide {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+
+  .card-accent-block {
+    display: none;
+  }
+
+  .card--tall {
+    grid-row: span 1;
+  }
+
+  .header-title {
+    font-size: clamp(3rem, 16vw, 5rem);
+  }
+}

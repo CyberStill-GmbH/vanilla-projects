@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flexible Card Grid</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <p class="header-label">Grid System</p>
+      <h1 class="header-title">Flexible<br><span>Card Grid</span></h1>
+      <p class="header-sub">Responsive layouts using <code>auto-fit</code> and <code>minmax()</code></p>
+    </div>
+    <div class="header-grid-bg" aria-hidden="true"></div>
+  </header>
+
+  <section class="section" id="basic">
+    <div class="section-header">
+      <span class="section-tag">01 — Basic</span>
+      <h2 class="section-title">Auto-Fit Grid</h2>
+      <p class="section-desc">Cards snap to a minimum of <code>260px</code>. Resize the window to see them reflow automatically — no media queries.</p>
+    </div>
+
+    <div class="grid grid--basic">
+      <article class="card card--basic">
+        <span class="card-icon">⬡</span>
+        <h3 class="card-title">Hexagonal UI</h3>
+        <p class="card-text">Grid cells filling available space uniformly, reorganizing when the viewport shrinks.</p>
+        <span class="card-tag">auto-fit</span>
+      </article>
+      <article class="card card--basic">
+        <span class="card-icon">◈</span>
+        <h3 class="card-title">Equal Columns</h3>
+        <p class="card-text">Each card gets the same width. The grid decides how many columns fit at any size.</p>
+        <span class="card-tag">minmax()</span>
+      </article>
+      <article class="card card--basic">
+        <span class="card-icon">▣</span>
+        <h3 class="card-title">Zero Breakpoints</h3>
+        <p class="card-text">This grid is responsive purely through CSS grid logic, without writing a single media query.</p>
+        <span class="card-tag">no media queries</span>
+      </article>
+      <article class="card card--basic">
+        <span class="card-icon">◎</span>
+        <h3 class="card-title">Content Driven</h3>
+        <p class="card-text">Cards grow or shrink based on real content dimensions, not arbitrary breakpoints.</p>
+        <span class="card-tag">1fr</span>
+      </article>
+      <article class="card card--basic">
+        <span class="card-icon">⬟</span>
+        <h3 class="card-title">Gap Control</h3>
+        <p class="card-text">The <code>gap</code> property gives consistent spacing without margin hacks or math.</p>
+        <span class="card-tag">gap</span>
+      </article>
+      <article class="card card--basic">
+        <span class="card-icon">◇</span>
+        <h3 class="card-title">Fluid Layout</h3>
+        <p class="card-text">Cards never overflow their container, always maintaining readable proportions.</p>
+        <span class="card-tag">fluid</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--dark" id="featured">
+    <div class="section-header">
+      <span class="section-tag">02 — Featured</span>
+      <h2 class="section-title">Dense Layout</h2>
+      <p class="section-desc">Some cards span multiple columns or rows using <code>grid-column</code> and <code>grid-row</code>.</p>
+    </div>
+
+    <div class="grid grid--dense">
+      <article class="card card--featured card--wide">
+        <div class="card-featured-inner">
+          <span class="card-label">Featured</span>
+          <h3 class="card-title">Wide Card — Spans 2 Columns</h3>
+          <p class="card-text">This card uses <code>grid-column: span 2</code> to occupy double the horizontal space, great for hero content.</p>
+        </div>
+        <div class="card-accent-block"></div>
+      </article>
+      <article class="card card--featured card--tall">
+        <span class="card-icon card-icon--lg">◉</span>
+        <h3 class="card-title">Tall Card</h3>
+        <p class="card-text">Spans 2 rows vertically using <code>grid-row: span 2</code>.</p>
+        <span class="card-tag">row span</span>
+      </article>
+      <article class="card card--featured">
+        <span class="card-icon">⬡</span>
+        <h3 class="card-title">Standard</h3>
+        <p class="card-text">Normal 1×1 card in the dense layout grid.</p>
+        <span class="card-tag">1×1</span>
+      </article>
+      <article class="card card--featured">
+        <span class="card-icon">◈</span>
+        <h3 class="card-title">Standard</h3>
+        <p class="card-text">Another normal cell filling whatever space is left.</p>
+        <span class="card-tag">1×1</span>
+      </article>
+      <article class="card card--featured card--wide">
+        <div class="card-featured-inner">
+          <span class="card-label">Wide</span>
+          <h3 class="card-title">Another Wide Card</h3>
+          <p class="card-text">Two-column spans are ideal for summary or highlight sections.</p>
+        </div>
+        <div class="card-accent-block card-accent-block--alt"></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="units">
+    <div class="section-header">
+      <span class="section-tag">03 — Units</span>
+      <h2 class="section-title">Responsive Units</h2>
+      <p class="section-desc">Cards sized using <code>%</code>, <code>rem</code>, and <code>vw</code> to demonstrate how each unit behaves.</p>
+    </div>
+
+    <div class="units-showcase">
+      <div class="unit-demo unit-demo--percent">
+        <span class="unit-label">% — Relative to parent</span>
+        <div class="unit-bar">
+          <div class="unit-fill unit-fill--40">40%</div>
+          <div class="unit-fill unit-fill--60">60%</div>
+        </div>
+        <p class="unit-note">Percentage widths are always calculated relative to the container element.</p>
+      </div>
+      <div class="unit-demo unit-demo--rem">
+        <span class="unit-label">rem — Relative to root font size</span>
+        <div class="unit-bar unit-bar--rem">
+          <div class="unit-box unit-box--rem">10rem</div>
+          <div class="unit-box unit-box--rem unit-box--sm">5rem</div>
+        </div>
+        <p class="unit-note">rem units stay consistent regardless of the parent's font size, making them great for spacing.</p>
+      </div>
+      <div class="unit-demo unit-demo--vw">
+        <span class="unit-label">vw — Relative to viewport width</span>
+        <div class="unit-bar">
+          <div class="unit-fill unit-fill--vw">30vw</div>
+        </div>
+        <p class="unit-note">vw units scale directly with the browser window, useful for truly fluid elements.</p>
+      </div>
+    </div>
+
+    <div class="grid grid--mixed">
+      <article class="card card--unit">
+        <span class="card-label">% width</span>
+        <h3 class="card-title">Percentage</h3>
+        <p class="card-text">Minimum column width set as a percentage of the container.</p>
+        <div class="card-meter">
+          <div class="card-meter-fill" style="width: 65%"></div>
+        </div>
+        <code class="card-code">minmax(30%, 1fr)</code>
+      </article>
+      <article class="card card--unit">
+        <span class="card-label">rem width</span>
+        <h3 class="card-title">Root Em</h3>
+        <p class="card-text">Fixed minimum using rem, which doesn't cascade from parents.</p>
+        <div class="card-meter">
+          <div class="card-meter-fill" style="width: 50%"></div>
+        </div>
+        <code class="card-code">minmax(18rem, 1fr)</code>
+      </article>
+      <article class="card card--unit">
+        <span class="card-label">vw width</span>
+        <h3 class="card-title">Viewport Width</h3>
+        <p class="card-text">Minimum tied to the viewport: always proportional to screen size.</p>
+        <div class="card-meter">
+          <div class="card-meter-fill" style="width: 80%"></div>
+        </div>
+        <code class="card-code">minmax(20vw, 1fr)</code>
+      </article>
+      <article class="card card--unit">
+        <span class="card-label">px width</span>
+        <h3 class="card-title">Pixels</h3>
+        <p class="card-text">Absolute minimum, never changes regardless of screen or font size.</p>
+        <div class="card-meter">
+          <div class="card-meter-fill" style="width: 40%"></div>
+        </div>
+        <code class="card-code">minmax(240px, 1fr)</code>
+      </article>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>Project 13 — Flexible Card Grid · CSS Grid · <code>auto-fit</code> · <code>minmax()</code></p>
+  </footer>
+
+</body>
+</html>
