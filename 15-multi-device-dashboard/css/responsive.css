@@ -1,0 +1,313 @@
+/* ============================================================
+   IEEE CS UNI DASHBOARD — RESPONSIVE
+   responsive.css — Breakpoint-specific visibility & overrides
+   Companion to layout.css; focused on content adaptations
+   ============================================================ */
+
+/* ══════════════════════════════════════════
+   VISIBILITY UTILITIES
+══════════════════════════════════════════ */
+
+/* Hide on mobile (< 768px) */
+.hide-mobile {
+  display: none !important;
+}
+
+/* Hide on tablet (768px – 1199px) */
+.hide-tablet {
+  display: initial;
+}
+
+/* Hide on desktop (1200px+) */
+.hide-desktop {
+  display: initial;
+}
+
+/* Show only on mobile */
+.show-mobile {
+  display: initial;
+}
+
+/* Show only on tablet+ */
+.show-tablet {
+  display: none !important;
+}
+
+/* Show only on desktop */
+.show-desktop {
+  display: none !important;
+}
+
+/* ══════════════════════════════════════════
+   MOBILE BASE (< 768px)
+══════════════════════════════════════════ */
+
+/* Body bottom padding for bottom nav */
+body {
+  padding-bottom: 56px;
+}
+
+/* Page title in topbar (mobile) */
+.topbar__mobile-title {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  text-align: center;
+  flex: 1;
+}
+
+/* Cards layout — single column */
+.grid-1   { grid-template-columns: 1fr; }
+.grid-2   { grid-template-columns: 1fr; }
+.grid-3   { grid-template-columns: 1fr; }
+.grid-4   { grid-template-columns: 1fr; }
+
+/* Table columns that collapse on mobile */
+.col-hide-mobile {
+  display: none;
+}
+
+/* Kanban horizontal scroll on mobile */
+.kanban__board {
+  grid-template-columns: repeat(4, 260px);
+}
+
+/* Stats compact on mobile */
+.stat-card {
+  padding: var(--space-3) var(--space-4);
+}
+
+.stat-card__value {
+  font-size: var(--text-2xl);
+}
+
+/* Content blocks tighter */
+.card__header,
+.card__body {
+  padding: var(--space-3) var(--space-4);
+}
+
+.card__footer {
+  padding: var(--space-2) var(--space-4);
+}
+
+/* Filter bar scrollable on mobile */
+.filter-bar {
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-bar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Pagination simplified on mobile */
+.pagination__info {
+  display: none;
+}
+
+.page-btn--ellipsis {
+  display: none;
+}
+
+/* Event item compact on mobile */
+.event-item__responsible {
+  display: none;
+}
+
+/* ══════════════════════════════════════════
+   TABLET — 768px to 1199px
+══════════════════════════════════════════ */
+
+@media (min-width: 768px) {
+
+  /* Remove bottom nav padding */
+  body {
+    padding-bottom: 0;
+  }
+
+  /* Visibility toggles */
+  .hide-mobile  { display: initial !important; }
+  .show-mobile  { display: none !important; }
+  .show-tablet  { display: initial !important; }
+
+  /* Grid columns */
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+
+  /* Table: restore some columns */
+  .col-hide-mobile {
+    display: table-cell;
+  }
+
+  /* Still hide on tablet */
+  .col-hide-tablet {
+    display: none;
+  }
+
+  /* Card header/body — restored padding */
+  .card__header,
+  .card__body {
+    padding: var(--space-4) var(--space-5);
+  }
+
+  .card__footer {
+    padding: var(--space-3) var(--space-5);
+  }
+
+  /* Stat card value larger */
+  .stat-card__value {
+    font-size: var(--text-2xl);
+  }
+
+  /* Events: restore responsible */
+  .event-item__responsible {
+    display: flex;
+  }
+
+  /* Pagination info restored */
+  .pagination__info {
+    display: block;
+  }
+
+  /* Topbar mobile title hidden */
+  .topbar__mobile-title {
+    display: none;
+  }
+
+  /* Filter bar wraps again */
+  .filter-bar {
+    overflow-x: visible;
+    flex-wrap: wrap;
+  }
+
+  /* Kanban board natural scroll */
+  .kanban__board {
+    grid-template-columns: repeat(4, minmax(160px, 1fr));
+    min-width: 600px;
+  }
+
+  /* Two-col stacks on tablet */
+  .two-col--60-40,
+  .two-col--50-50 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Member table shows area column */
+  .col-area {
+    display: table-cell;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════════
+   DESKTOP — 1200px+
+══════════════════════════════════════════ */
+
+@media (min-width: 1200px) {
+
+  /* Visibility toggles */
+  .hide-tablet  { display: none !important; }
+  .hide-desktop { display: none !important; }
+  .show-desktop { display: initial !important; }
+
+  /* Grid columns restored */
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+  /* All table columns visible */
+  .col-hide-tablet {
+    display: table-cell;
+  }
+
+  /* Stat card full size */
+  .stat-card {
+    padding: var(--space-5);
+  }
+
+  .stat-card__value {
+    font-size: var(--text-3xl);
+  }
+
+  /* Two-col restored */
+  .two-col--60-40 {
+    grid-template-columns: 3fr 2fr;
+  }
+
+  .two-col--50-50 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Kanban full width, natural */
+  .kanban__board {
+    min-width: unset;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Row actions always subtle */
+  .row-actions {
+    opacity: 0;
+  }
+
+  .data-table tbody tr:hover .row-actions {
+    opacity: 1;
+  }
+
+  /* Wider content padding */
+  .content-block {
+    margin-bottom: var(--space-6);
+  }
+}
+
+/* ══════════════════════════════════════════
+   PRINT STYLES
+══════════════════════════════════════════ */
+
+@media print {
+  .sidebar,
+  .topbar,
+  .bottom-nav,
+  .overlay,
+  .filter-bar,
+  .row-actions,
+  .btn,
+  .hamburger {
+    display: none !important;
+  }
+
+  .app {
+    display: block;
+  }
+
+  .main {
+    margin: 0;
+    padding: 0;
+  }
+
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  body {
+    font-size: 12px;
+    color: #000;
+    background: #fff;
+    padding-bottom: 0;
+  }
+
+  a[href]::after {
+    content: none;
+  }
+}

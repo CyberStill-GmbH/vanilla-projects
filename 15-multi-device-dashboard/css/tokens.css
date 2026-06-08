@@ -1,0 +1,199 @@
+/* ============================================================
+   IEEE CS UNI DASHBOARD — DESIGN TOKENS
+   tokens.css — Single source of truth for all design decisions
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+
+  /* ──────────────────────────────────────
+     FOUNDATION SURFACES
+  ────────────────────────────────────── */
+  --bg-canvas:          #F0F2F5;
+  --surface:            #FFFFFF;
+  --surface-elevated:   #FAFAFA;
+  --surface-hover:      #F8FAFC;
+  --surface-selected:   #EBF2FF;
+
+  /* ──────────────────────────────────────
+     SIDEBAR
+  ────────────────────────────────────── */
+  --sidebar-bg:         #0D1B2A;
+  --sidebar-hover:      #132338;
+  --sidebar-active:     #132338;
+  --sidebar-border:     #1E3A5F;
+  --sidebar-width:      240px;
+  --sidebar-collapsed:  72px;
+
+  /* ──────────────────────────────────────
+     IEEE BRAND
+  ────────────────────────────────────── */
+  --blue-primary:       #003F87;
+  --blue-hover:         #1A56DB;
+  --blue-active:        #002D6B;
+  --blue-muted:         #EBF2FF;
+  --blue-light:         #DBEAFE;
+  --gold:               #E8A600;
+  --gold-hover:         #CC9200;
+  --gold-muted:         #FFF8E6;
+  --gold-light:         #FEF3C7;
+
+  /* ──────────────────────────────────────
+     SEMANTIC COLORS
+  ────────────────────────────────────── */
+  --success-text:       #0F7B55;
+  --success-bg:         #DCFCE7;
+  --success-border:     #86EFAC;
+
+  --warning-text:       #92550A;
+  --warning-bg:         #FEF3C7;
+  --warning-border:     #FCD34D;
+
+  --danger-text:        #B91C1C;
+  --danger-bg:          #FEE2E2;
+  --danger-border:      #FCA5A5;
+
+  --info-text:          #1547A0;
+  --info-bg:            #DBEAFE;
+  --info-border:        #93C5FD;
+
+  --neutral-text:       #374151;
+  --neutral-bg:         #F3F4F6;
+  --neutral-border:     #D1D5DB;
+
+  /* ──────────────────────────────────────
+     TEXT SCALE
+  ────────────────────────────────────── */
+  --text-primary:       #0F172A;
+  --text-secondary:     #475569;
+  --text-tertiary:      #94A3B8;
+  --text-disabled:      #CBD5E1;
+  --text-inverse:       #F8FAFC;
+  --text-inverse-muted: #94A3B8;
+  --text-link:          #003F87;
+  --text-link-hover:    #1A56DB;
+
+  /* ──────────────────────────────────────
+     BORDERS
+  ────────────────────────────────────── */
+  --border-subtle:      #E2E8F0;
+  --border-default:     #CBD5E1;
+  --border-strong:      #94A3B8;
+  --border-focus:       #003F87;
+
+  /* ──────────────────────────────────────
+     TYPOGRAPHY
+  ────────────────────────────────────── */
+  --font-display:       'DM Sans', sans-serif;
+  --font-body:          'IBM Plex Sans', sans-serif;
+  --font-mono:          'IBM Plex Mono', monospace;
+
+  --text-xs:            11px;
+  --text-sm:            12px;
+  --text-base:          13px;
+  --text-md:            14px;
+  --text-lg:            16px;
+  --text-xl:            20px;
+  --text-2xl:           24px;
+  --text-3xl:           32px;
+
+  --leading-tight:      1.2;
+  --leading-normal:     1.5;
+  --leading-data:       1.0;
+
+  --weight-normal:      400;
+  --weight-medium:      500;
+  --weight-semibold:    600;
+  --weight-bold:        700;
+
+  --tracking-tight:     -0.02em;
+  --tracking-normal:    0;
+  --tracking-wide:      0.04em;
+  --tracking-wider:     0.08em;
+  --tracking-widest:    0.12em;
+
+  /* ──────────────────────────────────────
+     SPACING (8pt grid)
+  ────────────────────────────────────── */
+  --space-0:    0px;
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:    12px;
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-8:    32px;
+  --space-10:   40px;
+  --space-12:   48px;
+  --space-16:   64px;
+
+  /* ──────────────────────────────────────
+     BORDER RADIUS
+  ────────────────────────────────────── */
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   8px;
+  --radius-xl:   10px;
+  --radius-full: 9999px;
+  --radius-circle: 50%;
+
+  /* ──────────────────────────────────────
+     SHADOWS
+  ────────────────────────────────────── */
+  --shadow-1:   0 1px 3px rgba(15,23,42,0.08), 0 1px 2px rgba(15,23,42,0.04);
+  --shadow-2:   0 4px 6px rgba(15,23,42,0.07), 0 2px 4px rgba(15,23,42,0.05);
+  --shadow-3:   0 20px 25px rgba(15,23,42,0.10), 0 8px 10px rgba(15,23,42,0.04);
+  --shadow-inner: inset 0 1px 2px rgba(15,23,42,0.06);
+  --focus-ring: 0 0 0 3px rgba(0,63,135,0.20);
+  --focus-ring-danger: 0 0 0 3px rgba(185,28,28,0.20);
+
+  /* ──────────────────────────────────────
+     TRANSITIONS
+  ────────────────────────────────────── */
+  --duration-fast:    120ms;
+  --duration-base:    200ms;
+  --duration-slow:    300ms;
+  --duration-drawer:  250ms;
+  --ease-default:     cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:          cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:         cubic-bezier(0, 0, 0.2, 1);
+
+  /* ──────────────────────────────────────
+     Z-INDEX SCALE
+  ────────────────────────────────────── */
+  --z-base:     1;
+  --z-dropdown: 50;
+  --z-sticky:   60;
+  --z-overlay:  90;
+  --z-sidebar:  100;
+  --z-modal:    110;
+  --z-toast:    120;
+
+  /* ──────────────────────────────────────
+     LAYOUT
+  ────────────────────────────────────── */
+  --topbar-height:      64px;
+  --topbar-height-sm:   56px;
+  --content-max-width:  1200px;
+  --content-padding:    var(--space-8);
+  --content-padding-sm: var(--space-5);
+
+  /* ──────────────────────────────────────
+     COMPONENT SIZES
+  ────────────────────────────────────── */
+  --avatar-xs:   20px;
+  --avatar-sm:   28px;
+  --avatar-md:   36px;
+  --avatar-lg:   40px;
+  --avatar-xl:   48px;
+
+  --input-height-sm: 30px;
+  --input-height-md: 36px;
+  --input-height-lg: 42px;
+
+  --btn-height-sm: 30px;
+  --btn-height-md: 36px;
+  --btn-height-lg: 42px;
+}
