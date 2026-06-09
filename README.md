@@ -3,8 +3,8 @@
 > **A 77-project journey to master web development fundamentals**  
 > Built with pure HTML, CSS, and JavaScript — no frameworks, no dependencies.
 
-[![Projects](https://img.shields.io/badge/projects-19%2F77-orange)](https://github.com/CyberStill-GmbH/vanilla-projects)
-[![Progress](https://img.shields.io/badge/progress-24.7%25-yellow)](https://github.com/CyberStill-GmbH/vanilla-projects)
+[![Projects](https://img.shields.io/badge/projects-20%2F77-orange)](https://github.com/CyberStill-GmbH/vanilla-projects)
+[![Progress](https://img.shields.io/badge/progress-26.0%25-yellow)](https://github.com/CyberStill-GmbH/vanilla-projects)
 [![Phase](https://img.shields.io/badge/focus-responsive%20CSS%20%2B%20DOM-blue)](https://github.com/CyberStill-GmbH/vanilla-projects)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -32,18 +32,18 @@ This repository documents a structured path for mastering web development from f
 
 | Metric | Value |
 |--------|-------|
-| **Total Projects** | 19 / 77 |
-| **Completion Rate** | 24.7% |
+| **Total Projects** | 20 / 77 |
+| **Completion Rate** | 26.0% |
 | **Current Focus** | Responsive CSS + DOM fundamentals |
-| **Completed Ranges** | 01-15, 21-24 |
-| **Latest Project** | 15. Multi-Device Dashboard |
+| **Completed Ranges** | 01-16, 21-24 |
+| **Latest Project** | 16. Animated Button Collection |
 | **Deployment** | GitHub Pages |
 | **Repository Status** | Active development |
 
 ### Phase Breakdown
 
 ```text
-Phase 1: HTML & CSS Foundations    [███████░░░] 15/20 (75%)
+Phase 1: HTML & CSS Foundations    [████████░░] 16/20 (80%)
 Phase 2: JavaScript Fundamentals   [██░░░░░░░░]  4/20 (20%)
 Phase 3: Advanced JavaScript       [░░░░░░░░░░]  0/20 (0%)
 Phase 4: Complex Applications      [░░░░░░░░░░]  0/17 (0%)
@@ -75,6 +75,7 @@ This repository is also a record of real debugging practice, not just finished U
 | HTML structure | A misplaced or overlapping HTML section affected layout behavior. | Cleaned the document structure so sections render in the expected order. |
 | Dynamic rendering | Repeated card markup made updates harder to maintain. | Used JavaScript data arrays with `forEach()` and `innerHTML` to generate cards dynamically. |
 | Responsive dashboard | Cards needed to adapt cleanly across desktop, tablet, and mobile. | Used `grid-template-columns`, `minmax()`, and responsive breakpoints for a stable multi-device layout. |
+| Animated buttons | Some hover styles targeted a generic `.btn:hover` selector and one `transition` declaration missed a comma. | Scoped hover styles to the correct button class and used explicit transition properties instead of relying on `transition: all`. |
 
 ---
 
@@ -131,7 +132,7 @@ Each project follows the same basic structure: semantic HTML, pure CSS, vanilla 
 | 13 | Flexible Card Grid | ✅ Completed | Responsive grid systems |
 | 14 | Adaptive Typography | ✅ Completed | `clamp()`, fluid text sizing |
 | 15 | Multi-Device Dashboard | ✅ Completed | Dashboard layout across desktop, tablet, and mobile |
-| 16 | Animated Button Collection | ⏳ Not Started | Transitions, transforms, hover states |
+| 16 | Animated Button Collection | ✅ Completed | Transitions, transforms, hover states, pseudo-elements |
 | 17 | Loading Spinners | ⏳ Not Started | Keyframes, animation timing |
 | 18 | Modal Component | ⏳ Not Started | Overlays, z-index, fixed positioning |
 | 19 | Dropdown Menu | ⏳ Not Started | Nested menus, focus states |
@@ -192,6 +193,9 @@ Each project follows the same basic structure: semantic HTML, pure CSS, vanilla 
 - `forEach()` plus template strings can reduce repeated HTML and make card generation more maintainable.
 - Small UI bugs often come from state mismatch: the DOM says one thing, CSS classes say another, and the viewport changes the rules.
 - Modularizing CSS and JavaScript early prevents small projects from turning into messy files.
+- Animated UI effects feel cleaner when transitions target specific properties like `transform`, `box-shadow`, and `color` instead of relying on `transition: all`.
+- Pseudo-elements with `position: relative`, `z-index`, and `overflow: hidden` are useful for slide backgrounds, border-draw effects, and decorative button animations.
+- `cubic-bezier()` can make transitions feel more dynamic and natural than a basic `ease` curve.
 
 ---
 
@@ -294,7 +298,7 @@ refactor(project-24): simplify dynamic background rendering
 | Milestone | Status | Meaning |
 |-----------|--------|---------|
 | **10 Projects** | ✅ Done | HTML/CSS basics are no longer abstract. |
-| **20 Projects** | 🔜 Next | Phase 1 foundation complete. |
+| **20 Projects** | ✅ Done | 20 projects completed; Phase 1 is still in progress because projects 17-20 remain. |
 | **40 Projects** | ⏳ Pending | JavaScript fundamentals solid. |
 | **60 Projects** | ⏳ Pending | Advanced DOM, APIs, and UI patterns practiced. |
 | **77 Projects** | ⏳ Pending | Full vanilla web development roadmap completed. |
@@ -348,7 +352,7 @@ See [LICENSE](LICENSE) for full details.
 <div align="center">
 
 **Current Status:** 🟢 Active Development  
-**Next Milestone:** Complete 20 / 77 projects  
+**Next Milestone:** Complete Phase 1 projects 17-20  
 **Daily Goal:** Build consistently and document lessons learned  
 **Final Goal:** Master vanilla web development fundamentals before moving deeper into frameworks
 
