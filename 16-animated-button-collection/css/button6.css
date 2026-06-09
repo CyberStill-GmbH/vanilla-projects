@@ -1,0 +1,52 @@
+.scale-btn {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: #fff;
+    background: #1A6EF5;
+    border: none;
+    border-radius: 14px;
+    padding: 18px 48px;
+    letter-spacing: 0.04em;
+    box-shadow: 0 0 24px rgba(26, 110, 245, 0.6);
+    transform: scale(1);
+    transition: 
+        transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.12s ease,
+        background 0.12s ease;
+    outline: none;
+}
+
+.scale-btn:hover {
+    background: #3D88FF;
+    box-shadow: 0 0 36px rgba(61, 136, 255, 0.8);
+    transform: scale(1.07);
+}
+
+.scale-btn:active {
+    transform: scale(0.93);
+    box-shadow: 0 0 12px rgba(26, 110, 245, 0.4);
+    background: #0F52C8;
+}
+
+.scale-btn:focus-visible {
+  outline: 3px solid rgba(26, 110, 245, 0.45);
+  outline-offset: 5px;
+}
+
+/* 
+===========================================
+            09/06/2026
+
+I'm tired... I need some sleep.
+I swear tomorrow will be a good day.
+
+Don't give up...
+We can, we can, WE CAN DO IT!
+
+AGAIN AND AGAIN.
+We aren't as good as we wanted to be,
+but... that's life.
+
+============================================
+*/

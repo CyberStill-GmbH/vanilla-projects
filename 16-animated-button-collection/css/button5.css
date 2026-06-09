@@ -1,0 +1,26 @@
+.press-btn {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    color: #fff;
+    background: #EE6B82;
+    border: none;
+    border-radius: 16px;
+    padding: 18px 48px;
+    letter-spacing: 0.04rem;
+    box-shadow: 
+      0 10px 0 #9E3050,
+      0 12px 6px rgba(0, 0, 0, 0.25);
+    transform: translateY(0);
+    transition: 
+        transform 0.07s ease
+        box-shadow 0.07s ease;
+    outline: none;
+}
+
+.press-btn:active {
+    transform: translateY(8px);
+    box-shadow:
+      0 2px 0 #9E3050,
+      0 3px 4px rgba(0,0,0,0.2);
+}

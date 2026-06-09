@@ -1,0 +1,59 @@
+.border-draw {
+  background: transparent;
+  color: #ff007f;
+  padding: 8px 12px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  transition:
+    color 0.4s ease,
+    text-shadow 0.4s ease;
+}
+
+.border-draw::before,
+.border-draw::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: transform 0.4s ease;
+}
+
+.border-draw::before {
+  border-top: 2px solid #ff007f;
+  border-bottom: 2px solid #ff007f;
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+.border-draw::after {
+  border-left: 2px solid #ff007f;
+  border-right: 2px solid #ff007f;
+  transform: scaleY(0);
+  transform-origin: center;
+}
+
+.border-draw:hover::before {
+  transform: scaleX(1);
+}
+
+.border-draw:hover::after {
+  transform: scaleY(1);
+}
+
+.border-draw:hover {
+  color: #ffffff;
+  text-shadow: 0 0 8px #ff007f;
+}
+
+.border-draw:active {
+  opacity: 0.7;
+}
+
+.border-draw:focus-visible {
+  outline: 3px solid rgba(255, 0, 127, 0.4);
+  outline-offset: 4px;
+}
