@@ -3,9 +3,9 @@
 > **A 77-project journey to master web development fundamentals**  
 > Built with pure HTML, CSS, and JavaScript — no frameworks, no dependencies.
 
-[![Projects](https://img.shields.io/badge/projects-20%2F77-orange)](https://github.com/CyberStill-GmbH/vanilla-projects)
-[![Progress](https://img.shields.io/badge/progress-26.0%25-yellow)](https://github.com/CyberStill-GmbH/vanilla-projects)
-[![Phase](https://img.shields.io/badge/focus-responsive%20CSS%20%2B%20DOM-blue)](https://github.com/CyberStill-GmbH/vanilla-projects)
+[![Projects](https://img.shields.io/badge/projects-24%2F77-orange)](https://github.com/CyberStill-GmbH/vanilla-projects)
+[![Progress](https://img.shields.io/badge/progress-31.2%25-yellow)](https://github.com/CyberStill-GmbH/vanilla-projects)
+[![Phase](https://img.shields.io/badge/focus-JavaScript%20fundamentals%20%2B%20DOM-blue)](https://github.com/CyberStill-GmbH/vanilla-projects)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
@@ -32,18 +32,18 @@ This repository documents a structured path for mastering web development from f
 
 | Metric | Value |
 |--------|-------|
-| **Total Projects** | 20 / 77 |
-| **Completion Rate** | 26.0% |
-| **Current Focus** | Responsive CSS + DOM fundamentals |
-| **Completed Ranges** | 01-16, 21-24 |
-| **Latest Project** | 16. Animated Button Collection |
+| **Total Projects** | 24 / 77 |
+| **Completion Rate** | 31.2% |
+| **Current Focus** | JavaScript fundamentals + DOM interactions |
+| **Completed Ranges** | 01-24 |
+| **Latest Project** | 20. Custom Form Elements |
 | **Deployment** | GitHub Pages |
 | **Repository Status** | Active development |
 
 ### Phase Breakdown
 
 ```text
-Phase 1: HTML & CSS Foundations    [████████░░] 16/20 (80%)
+Phase 1: HTML & CSS Foundations    [██████████] 20/20 (100%)
 Phase 2: JavaScript Fundamentals   [██░░░░░░░░]  4/20 (20%)
 Phase 3: Advanced JavaScript       [░░░░░░░░░░]  0/20 (0%)
 Phase 4: Complex Applications      [░░░░░░░░░░]  0/17 (0%)
@@ -53,16 +53,31 @@ Phase 4: Complex Applications      [░░░░░░░░░░]  0/17 (0%)
 
 | Skill Area | Progress | Current Level |
 |------------|----------|---------------|
-| Semantic HTML | 15/15 | ⭐⭐⭐⭐☆ Strong foundation |
-| CSS Layouts | 15/15 | ⭐⭐⭐⭐☆ Strong foundation |
-| Responsive Design | 5/10 | ⭐⭐⭐☆☆ Improving |
-| CSS Grid / Flexbox | 10/15 | ⭐⭐⭐☆☆ Improving |
-| Vanilla JavaScript | 4/25 | ⭐⭐☆☆☆ Building consistency |
-| DOM Manipulation | 4/20 | ⭐⭐☆☆☆ Building consistency |
-| Async JavaScript | 0/12 | ⭐☆☆☆☆ Not started |
+| Semantic HTML | 20/20 | ⭐⭐⭐⭐⭐ Completed Phase 1 |
+| CSS Layouts | 20/20 | ⭐⭐⭐⭐⭐ Completed Phase 1 |
+| Responsive Design | 8/10 | ⭐⭐⭐⭐☆ Strong foundation |
+| CSS Grid / Flexbox | 12/15 | ⭐⭐⭐⭐☆ Strong foundation |
+| Vanilla JavaScript | 8/25 | ⭐⭐☆☆☆ Building consistency |
+| DOM Manipulation | 8/20 | ⭐⭐☆☆☆ Building consistency |
+| Async JavaScript | 1/12 | ⭐☆☆☆☆ First simulated flow |
 | APIs Integration | 0/8 | ⭐☆☆☆☆ Not started |
 
 ---
+
+## 🚀 Next Challenge
+
+### 25 - Text Analyzer
+
+The next project starts Phase 2 more seriously: a text analyzer focused on string manipulation, input handling, live DOM updates, counters, and basic text statistics.
+
+**Main goals:**
+
+- Count characters, words, sentences, and paragraphs.
+- Display live updates as the user types.
+- Practice string methods like `trim()`, `split()`, `filter()`, `replace()`, and regex.
+- Add clear empty-state behavior.
+- Keep the UI simple and focus on JavaScript logic.
+
 
 ## 🧩 Recently Fixed Bugs
 
@@ -76,6 +91,10 @@ This repository is also a record of real debugging practice, not just finished U
 | Dynamic rendering | Repeated card markup made updates harder to maintain. | Used JavaScript data arrays with `forEach()` and `innerHTML` to generate cards dynamically. |
 | Responsive dashboard | Cards needed to adapt cleanly across desktop, tablet, and mobile. | Used `grid-template-columns`, `minmax()`, and responsive breakpoints for a stable multi-device layout. |
 | Animated buttons | Some hover styles targeted a generic `.btn:hover` selector and one `transition` declaration missed a comma. | Scoped hover styles to the correct button class and used explicit transition properties instead of relying on `transition: all`. |
+| Loading spinners | Loaders needed distinct animation behavior instead of repeated circular motion. | Built multiple loaders using `@keyframes`, `animation-delay`, `cubic-bezier()`, pseudo-elements, and `position: relative/absolute`. |
+| Modal component | `aria-hidden` changed correctly but the modal did not appear visually. | Added `.is-open` with `classList` to separate accessibility state from visual UI state. |
+| Dropdown menu | A small syntax error in the keyboard handler broke the entire script. | Fixed the invalid comma/const declaration, then organized helper functions for opening, closing, focus, and keyboard navigation. |
+| Custom form elements | Showing the email error accidentally affected the password section display. | Targeted the correct error element and kept validation helpers scoped to specific message nodes. |
 
 ---
 
@@ -133,10 +152,10 @@ Each project follows the same basic structure: semantic HTML, pure CSS, vanilla 
 | 14 | Adaptive Typography | ✅ Completed | `clamp()`, fluid text sizing |
 | 15 | Multi-Device Dashboard | ✅ Completed | Dashboard layout across desktop, tablet, and mobile |
 | 16 | Animated Button Collection | ✅ Completed | Transitions, transforms, hover states, pseudo-elements |
-| 17 | Loading Spinners | ⏳ Not Started | Keyframes, animation timing |
-| 18 | Modal Component | ⏳ Not Started | Overlays, z-index, fixed positioning |
-| 19 | Dropdown Menu | ⏳ Not Started | Nested menus, focus states |
-| 20 | Custom Form Elements | ⏳ Not Started | Styled inputs, form states |
+| 17 | Loading Spinners | ✅ Completed | Keyframes, animation timing |
+| 18 | Modal Component | ✅ Completed | Overlays, z-index, fixed positioning |
+| 19 | Dropdown Menu | ✅ Completed | Nested menus, focus states |
+| 20 | Custom Form Elements | ✅ Completed | Styled inputs, form states |
 
 ### 📗 Phase 2: JavaScript Fundamentals (21-40)
 
@@ -196,6 +215,14 @@ Each project follows the same basic structure: semantic HTML, pure CSS, vanilla 
 - Animated UI effects feel cleaner when transitions target specific properties like `transform`, `box-shadow`, and `color` instead of relying on `transition: all`.
 - Pseudo-elements with `position: relative`, `z-index`, and `overflow: hidden` are useful for slide backgrounds, border-draw effects, and decorative button animations.
 - `cubic-bezier()` can make transitions feel more dynamic and natural than a basic `ease` curve.
+- `@keyframes` make it possible to break animations into phases instead of only relying on simple transitions.
+- `position: relative` on a parent and `position: absolute` on pseudo-elements are useful for internal animated parts, overlays, loaders, and decorative UI.
+- ARIA attributes like `aria-expanded`, `aria-hidden`, `aria-controls`, and `aria-describedby` describe state, but CSS classes still control the visual state.
+- `classList` is essential for keeping interactive UI components readable and predictable.
+- Keyboard-friendly components need explicit focus management with `.focus()`, `:focus-visible`, `Escape`, arrow keys, `Home`, and `End`.
+- `event.preventDefault()` is useful before custom keyboard behavior to avoid fighting the browser's default interactions.
+- Form validation becomes cleaner when error helpers update specific message elements instead of broad containers.
+- `async` and `await` can simulate a real backend flow with loading, success, and error states before an API exists.
 
 ---
 
@@ -298,7 +325,7 @@ refactor(project-24): simplify dynamic background rendering
 | Milestone | Status | Meaning |
 |-----------|--------|---------|
 | **10 Projects** | ✅ Done | HTML/CSS basics are no longer abstract. |
-| **20 Projects** | ✅ Done | 20 projects completed; Phase 1 is still in progress because projects 17-20 remain. |
+| **20 Projects** | ✅ Done | Phase 1 completed: HTML/CSS foundations plus essential UI component patterns. |
 | **40 Projects** | ⏳ Pending | JavaScript fundamentals solid. |
 | **60 Projects** | ⏳ Pending | Advanced DOM, APIs, and UI patterns practiced. |
 | **77 Projects** | ⏳ Pending | Full vanilla web development roadmap completed. |
@@ -352,8 +379,8 @@ See [LICENSE](LICENSE) for full details.
 <div align="center">
 
 **Current Status:** 🟢 Active Development  
-**Next Milestone:** Complete Phase 1 projects 17-20  
-**Daily Goal:** Build consistently and document lessons learned  
+**Next Milestone:** Reach 40 projects and complete JavaScript fundamentals  
+**Daily Goal:** Build consistently, debug intentionally, and document lessons learned  
 **Final Goal:** Master vanilla web development fundamentals before moving deeper into frameworks
 
 ---
