@@ -1,0 +1,95 @@
+.classic-spinner {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 6px solid rgb(0, 240, 255);
+    border-top-color: rgb(130, 245, 255);
+    animation: spin 1s linear infinite;
+}
+
+.dots-loader {
+    width: 12px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #FFC5D3;
+    clip-path: inset(-220%);
+    animation: bounce 2s infinite linear;
+}
+
+.pulse-loader {
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #000;
+    box-shadow: 0 0 0 0 #0004;
+    position: relative;
+    animation: pulse 1.5s infinite linear;
+}
+
+.pulse-loader::before,
+.pulse-loader::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: 0 0 0 0 #0004;
+    animation: inherit;
+    animation-delay: -0.5s;
+}
+
+.worm-loader {
+    display: block;
+    position: relative;
+    height: 12px;
+    width: 80%;
+    border: 1px solid #0004;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.worm-loader::after {
+    content: "";
+    width: 40%;
+    height: 100%;
+    background: #FF3D;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    animation: wormMove 2s infinite linear;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+  0%  {box-shadow:0 0 0 0    #FFC5D3, 40px 0 #FFC5D3,-40px 0 #FFC5D3,0 40px #FFC5D3,0 -40px #FFC5D3}
+  10% {box-shadow:0 0 0 0    #FFC5D3, 12px 0 #FFC5D3,-40px 0 #FFC5D3,0 40px #FFC5D3,0 -40px #FFC5D3}
+  20% {box-shadow:0 0 0 4px  #FFC5D3, 0px  0 #FFC5D3,-40px 0 #FFC5D3,0 40px #FFC5D3,0 -40px #FFC5D3}
+  30% {box-shadow:0 0 0 4px  #FFC5D3, 0px  0 #FFC5D3,-12px 0 #FFC5D3,0 40px #FFC5D3,0 -40px #FFC5D3}
+  40% {box-shadow:0 0 0 8px  #FFC5D3, 0px  0 #FFC5D3,  0px 0 #FFC5D3,0 40px #FFC5D3,0 -40px #FFC5D3}
+  50% {box-shadow:0 0 0 8px  #FFC5D3, 0px  0 #FFC5D3,  0px 0 #FFC5D3,0 12px #FFC5D3,0 -40px #FFC5D3}
+  60% {box-shadow:0 0 0 12px #FFC5D3, 0px  0 #FFC5D3,  0px 0 #FFC5D3,0  0px #FFC5D3,0 -40px #FFC5D3}
+  70% {box-shadow:0 0 0 12px #FFC5D3, 0px  0 #FFC5D3,  0px 0 #FFC5D3,0  0px #FFC5D3,0 -12px #FFC5D3}
+  80% {box-shadow:0 0 0 16px #FFC5D3, 0px  0 #FFC5D3,  0px 0 #FFC5D3,0  0px #FFC5D3,0  0px #FFC5D3}
+  90%,
+  100%{box-shadow:0 0 0 0    #FFC5D3, 40px 0 #FFC5D3,-40px 0 #FFC5D3,0 40px #FFC5D3,0 -40px #FFC5D3}
+}
+
+@keyframes pulse {
+    100% {box-shadow: 0 0 0 40px #0000}
+}
+
+@keyframes wormMove {
+    0% {
+        left: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        left: 100%;
+        transform: translateX(0%);
+    }
+}
