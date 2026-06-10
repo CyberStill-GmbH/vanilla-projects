@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codenix — Sign in</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <!-- ===== Left panel: brand / showcase ===== -->
+    <aside class="showcase" aria-hidden="true">
+      <div class="showcase-glow"></div>
+
+      <div class="showcase-brand">
+        <img src="assets/logo.png" alt="" class="showcase-logo" />
+        <span class="showcase-name">Codenix</span>
+      </div>
+
+      <div class="showcase-body">
+        <h2 class="showcase-title">
+          Sharpen your craft, <span class="grad-text">one problem at a time.</span>
+        </h2>
+        <p class="showcase-subtitle">
+          Track your streak, climb the leaderboard, and ship cleaner solutions every day.
+        </p>
+
+        <div class="code-card">
+          <div class="code-card-header">
+            <div class="code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="code-filename">two_sum.rs</span>
+          </div>
+          <pre class="code-card-body"><code><span class="tok-kw">fn</span> <span class="tok-fn">two_sum</span>(nums: &amp;[i32], target: i32) -&gt; (usize, usize) {
+    <span class="tok-kw">let</span> <span class="tok-kw">mut</span> seen = HashMap::new();
+    <span class="tok-kw">for</span> (i, &amp;n) <span class="tok-kw">in</span> nums.iter().enumerate() {
+        <span class="tok-kw">if let</span> <span class="tok-fn">Some</span>(&amp;j) = seen.get(&amp;(target - n)) {
+            <span class="tok-kw">return</span> (j, i);
+        }
+        seen.insert(n, i);
+    }
+    <span class="tok-fn">unreachable!</span>()
+}</code></pre>
+        </div>
+
+        <ul class="stat-row">
+          <li><strong>2,400+</strong><span>Problems</span></li>
+          <li><strong>180k</strong><span>Developers</span></li>
+          <li><strong>Live</strong><span>Contests</span></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- ===== Right panel: login form ===== -->
+    <main class="auth">
+      <div class="auth-card">
+
+        <div class="auth-brand-mobile">
+          <img src="assets/logo.png" alt="Codenix" class="auth-logo-mobile" />
+        </div>
+
+        <header class="auth-header">
+          <h1>Welcome back</h1>
+          <p>Sign in to continue your progress on Codenix.</p>
+        </header>
+
+        <form class="auth-form" id="login-form" novalidate>
+
+          <!-- Email -->
+          <div class="field" id="field-email">
+            <label for="email">Email</label>
+            <div class="input-shell">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 6.5C3 5.67 3.67 5 4.5 5h15c.83 0 1.5.67 1.5 1.5v11c0 .83-.67 1.5-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11Z" stroke="currentColor" stroke-width="1.5"/>
+                <path d="m4 6 8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                aria-describedby="email-error"
+                required
+              />
+            </div>
+            <p class="field-error" id="email-error" role="alert"></p>
+          </div>
+
+          <!-- Password -->
+          <div class="field" id="field-password">
+            <div class="field-label-row">
+              <label for="password">Password</label>
+              <a href="#" class="link-inline">Forgot password?</a>
+            </div>
+            <div class="input-shell">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="4" y="10" width="16" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                autocomplete="current-password"
+                aria-describedby="password-error"
+                required
+                minlength="8"
+              />
+              <button type="button" class="toggle-visibility" id="toggle-password" aria-label="Show password" aria-pressed="false">
+                <svg class="icon-eye" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.5"/>
+                  <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" aria-hidden="true" hidden>
+                  <path d="M3 3l18 18M10.6 10.6a3 3 0 0 0 4.24 4.24M9.9 4.24A10.4 10.4 0 0 1 12 4c6.5 0 10 7 10 7a17 17 0 0 1-2.6 3.5M6.6 6.6C4 8.3 2 11 2 11s3.5 7 10 7c1.4 0 2.66-.32 3.78-.83" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </button>
+            </div>
+            <p class="field-error" id="password-error" role="alert"></p>
+          </div>
+
+          <!-- Remember + submit -->
+          <div class="field-row">
+            <label class="checkbox">
+              <input type="checkbox" id="remember" name="remember" />
+              <span class="checkbox-box" aria-hidden="true">
+                <svg viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>Remember me</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submit-btn">
+            <span class="btn-label">Sign in</span>
+            <span class="btn-spinner" aria-hidden="true"></span>
+          </button>
+
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="divider"><span>or continue with</span></div>
+
+        <div class="oauth-row">
+          <button type="button" class="btn-oauth" data-provider="github">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.5 0-.24-.01-1.04-.01-1.88-2.78.62-3.37-1.2-3.37-1.2-.45-1.18-1.11-1.5-1.11-1.5-.9-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.58 2.34 1.12 2.91.86.09-.67.35-1.12.64-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.5A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+            GitHub
+          </button>
+          <button type="button" class="btn-oauth" data-provider="google">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.6 12.23c0-.74-.07-1.45-.19-2.13H12v4.03h5.4a4.62 4.62 0 0 1-2 3.03v2.5h3.24c1.9-1.75 2.96-4.34 2.96-7.43Z" fill="#4285F4"/>
+              <path d="M12 22c2.7 0 4.96-.9 6.62-2.43l-3.24-2.5c-.9.6-2.05.96-3.38.96-2.6 0-4.8-1.75-5.6-4.12H3.05v2.59A10 10 0 0 0 12 22Z" fill="#34A853"/>
+              <path d="M6.4 13.91A6 6 0 0 1 6.08 12c0-.66.11-1.31.31-1.91V7.5H3.05A10 10 0 0 0 2 12c0 1.6.39 3.12 1.05 4.5l3.35-2.59Z" fill="#FBBC05"/>
+              <path d="M12 6.38c1.47 0 2.79.5 3.83 1.49l2.87-2.87C16.95 3.18 14.7 2.27 12 2.27a10 10 0 0 0-8.95 5.5l3.35 2.6c.8-2.38 3-4 5.6-4Z" fill="#EA4335"/>
+            </svg>
+            Google
+          </button>
+        </div>
+
+        <p class="auth-footer">
+          Don't have an account? <a href="#" class="link-inline">Create one</a>
+        </p>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
