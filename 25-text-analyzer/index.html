@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Analyzer · Laboratorio de texto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============================================
+       HEADER / HERO
+       ============================================ -->
+  <header class="hero">
+    <div class="hero__eyebrow">strings · input · counting</div>
+    <h1 class="hero__title">
+      Text<span class="hero__title-accent">Analyzer</span>
+    </h1>
+    <p class="hero__subtitle">
+      Escribe o pega un texto y observa, en tiempo real, cómo se descompone en
+      caracteres, palabras, frases y patrones.
+    </p>
+  </header>
+
+  <!-- ============================================
+       MAIN LAYOUT: editor + panel de métricas
+       ============================================ -->
+  <main class="lab">
+
+    <!-- Columna izquierda: editor de texto -->
+    <section class="lab__editor" aria-label="Área de entrada de texto">
+      <div class="editor__bar">
+        <span class="editor__label">Tu texto</span>
+        <div class="editor__actions">
+          <button class="btn btn--ghost" id="btn-paste" type="button">Pegar</button>
+          <button class="btn btn--ghost" id="btn-clear" type="button">Limpiar</button>
+        </div>
+      </div>
+
+      <textarea
+        id="text-input"
+        class="editor__textarea"
+        placeholder="Empieza a escribir aquí o pega tu texto…"
+        spellcheck="false"
+      ></textarea>
+
+      <div class="editor__footer">
+        <span id="status-message" class="editor__status">Listo para analizar</span>
+      </div>
+    </section>
+
+    <!-- Columna derecha: panel de métricas -->
+    <aside class="lab__panel" aria-label="Resultados del análisis">
+
+      <!-- Métricas principales -->
+      <div class="metrics-grid">
+        <div class="metric-card" id="card-chars">
+          <span class="metric-card__value" id="count-chars">0</span>
+          <span class="metric-card__label">Caracteres</span>
+        </div>
+        <div class="metric-card" id="card-chars-no-spaces">
+          <span class="metric-card__value" id="count-chars-no-spaces">0</span>
+          <span class="metric-card__label">Sin espacios</span>
+        </div>
+        <div class="metric-card" id="card-words">
+          <span class="metric-card__value" id="count-words">0</span>
+          <span class="metric-card__label">Palabras</span>
+        </div>
+        <div class="metric-card" id="card-sentences">
+          <span class="metric-card__value" id="count-sentences">0</span>
+          <span class="metric-card__label">Frases</span>
+        </div>
+        <div class="metric-card" id="card-paragraphs">
+          <span class="metric-card__value" id="count-paragraphs">0</span>
+          <span class="metric-card__label">Párrafos</span>
+        </div>
+        <div class="metric-card" id="card-reading-time">
+          <span class="metric-card__value" id="reading-time">0s</span>
+          <span class="metric-card__label">Lectura aprox.</span>
+        </div>
+      </div>
+
+      <!-- Palabra más frecuente / longitud promedio -->
+      <div class="insight-row">
+        <div class="insight-box">
+          <span class="insight-box__label">Palabra más usada</span>
+          <span class="insight-box__value" id="top-word">—</span>
+        </div>
+        <div class="insight-box">
+          <span class="insight-box__label">Longitud media de palabra</span>
+          <span class="insight-box__value" id="avg-word-length">—</span>
+        </div>
+      </div>
+
+      <!-- Tabla de frecuencia de letras -->
+      <div class="freq-section">
+        <h2 class="freq-section__title">Frecuencia de letras</h2>
+        <div class="freq-bars" id="freq-bars">
+          <!-- Las barras de frecuencia se generan dinámicamente con JS -->
+          <p class="freq-bars__empty" id="freq-empty">Aún no hay datos suficientes.</p>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <footer class="footer">
+    <p>Hecho con HTML, CSS y JS vanilla · Proyecto 25 · Text Analyzer</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
