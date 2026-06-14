@@ -3,8 +3,8 @@
 > **A 77-project journey to master web development fundamentals**  
 > Built with pure HTML, CSS, and JavaScript — no frameworks, no dependencies.
 
-[![Projects](https://img.shields.io/badge/projects-24%2F77-orange)](https://github.com/CyberStill-GmbH/vanilla-projects)
-[![Progress](https://img.shields.io/badge/progress-31.2%25-yellow)](https://github.com/CyberStill-GmbH/vanilla-projects)
+[![Projects](https://img.shields.io/badge/projects-26%2F77-orange)](https://github.com/CyberStill-GmbH/vanilla-projects)
+[![Progress](https://img.shields.io/badge/progress-33.8%25-yellow)](https://github.com/CyberStill-GmbH/vanilla-projects)
 [![Phase](https://img.shields.io/badge/focus-JavaScript%20fundamentals%20%2B%20DOM-blue)](https://github.com/CyberStill-GmbH/vanilla-projects)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
@@ -32,11 +32,11 @@ This repository documents a structured path for mastering web development from f
 
 | Metric | Value |
 |--------|-------|
-| **Total Projects** | 24 / 77 |
-| **Completion Rate** | 31.2% |
+| **Total Projects** | 26 / 77 |
+| **Completion Rate** | 33.8% |
 | **Current Focus** | JavaScript fundamentals + DOM interactions |
-| **Completed Ranges** | 01-24 |
-| **Latest Project** | 20. Custom Form Elements |
+| **Completed Ranges** | 01-26 |
+| **Latest Project** | 26. Calculator |
 | **Deployment** | GitHub Pages |
 | **Repository Status** | Active development |
 
@@ -44,7 +44,7 @@ This repository documents a structured path for mastering web development from f
 
 ```text
 Phase 1: HTML & CSS Foundations    [██████████] 20/20 (100%)
-Phase 2: JavaScript Fundamentals   [██░░░░░░░░]  4/20 (20%)
+Phase 2: JavaScript Fundamentals   [███░░░░░░░]  6/20 (30%)
 Phase 3: Advanced JavaScript       [░░░░░░░░░░]  0/20 (0%)
 Phase 4: Complex Applications      [░░░░░░░░░░]  0/17 (0%)
 ```
@@ -57,27 +57,28 @@ Phase 4: Complex Applications      [░░░░░░░░░░]  0/17 (0%)
 | CSS Layouts | 20/20 | ⭐⭐⭐⭐⭐ Completed Phase 1 |
 | Responsive Design | 8/10 | ⭐⭐⭐⭐☆ Strong foundation |
 | CSS Grid / Flexbox | 12/15 | ⭐⭐⭐⭐☆ Strong foundation |
-| Vanilla JavaScript | 8/25 | ⭐⭐☆☆☆ Building consistency |
-| DOM Manipulation | 8/20 | ⭐⭐☆☆☆ Building consistency |
-| Async JavaScript | 1/12 | ⭐☆☆☆☆ First simulated flow |
+| Vanilla JavaScript | 10/25 | ⭐⭐⭐☆☆ Building consistency |
+| DOM Manipulation | 10/20 | ⭐⭐⭐☆☆ Building consistency |
+| Async JavaScript | 2/12 | ⭐⭐☆☆☆ Clipboard API and simulated async flows |
 | APIs Integration | 0/8 | ⭐☆☆☆☆ Not started |
 
 ---
 
 ## 🚀 Next Challenge
 
-### 25 - Text Analyzer
+### 27 - Tip Calculator
 
-The next project starts Phase 2 more seriously: a text analyzer focused on string manipulation, input handling, live DOM updates, counters, and basic text statistics.
+The next project focuses on form inputs, numeric parsing, calculations, validation, and user feedback.
 
 **Main goals:**
 
-- Count characters, words, sentences, and paragraphs.
-- Display live updates as the user types.
-- Practice string methods like `trim()`, `split()`, `filter()`, `replace()`, and regex.
-- Add clear empty-state behavior.
-- Keep the UI simple and focus on JavaScript logic.
+- Handle numeric user input safely.
+- Calculate tips and total bills dynamically.
+- Practice parsing, validation, and formatting.
+- Improve state synchronization between inputs and outputs.
+- Keep the interface simple while strengthening JavaScript logic.
 
+---
 
 ## 🧩 Recently Fixed Bugs
 
@@ -95,6 +96,12 @@ This repository is also a record of real debugging practice, not just finished U
 | Modal component | `aria-hidden` changed correctly but the modal did not appear visually. | Added `.is-open` with `classList` to separate accessibility state from visual UI state. |
 | Dropdown menu | A small syntax error in the keyboard handler broke the entire script. | Fixed the invalid comma/const declaration, then organized helper functions for opening, closing, focus, and keyboard navigation. |
 | Custom form elements | Showing the email error accidentally affected the password section display. | Targeted the correct error element and kept validation helpers scoped to specific message nodes. |
+| Text Analyzer | Long text and live analysis required several different counters to stay synchronized. | Separated the logic into helper functions for characters, words, sentences, paragraphs, reading time, average length, and frequency metrics. |
+| Text Analyzer | Frequent use of `innerHTML` could encourage unsafe rendering habits and future XSS-prone patterns. | Rebuilt dynamic frequency rows with `document.createElement()`, `textContent`, `classList.add()`, and `append()` instead of injecting raw HTML. |
+| Text Analyzer | Clipboard reading was new compared to previous copy-only behavior. | Used `navigator.clipboard.readText()` with `async/await`, `try...catch`, UI updates, and textarea focus management after paste. |
+| Calculator | Calculator buttons required handling many actions without attaching dozens of event listeners. | Implemented event delegation using a single keypad listener combined with `.closest()`, `data-action`, and `data-value`. |
+| Calculator | Chained operations and overwrite behavior caused inconsistent state transitions. | Centralized logic in a state object containing current value, previous value, operator, and overwrite mode. |
+| Calculator | A scrollbar unexpectedly appeared inside the result display. | Hid the display scrollbar with `::-webkit-scrollbar { display: none; }` and improved the visual polish of the calculator screen. |
 
 ---
 
@@ -109,12 +116,19 @@ vanilla-projects/
 │   ├── README.md
 │   └── assets/
 │
-├── 15-multi-device-dashboard/
+├── 25-text-analyzer/
 │   ├── index.html
-│   ├── style.css
-│   ├── script.js
-│   ├── README.md
-│   └── assets/
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│   └── README.md
+│
+├── 26-calculator/
+│   ├── index.html
+│   ├── css/
+│   ├── js/
+│   ├── images/
+│   └── README.md
 │
 ├── docs/
 │   ├── LEARNING_PATH.md
@@ -165,8 +179,8 @@ Each project follows the same basic structure: semantic HTML, pure CSS, vanilla 
 | 22 | Color Flipper | ✅ Completed | Random values, style manipulation |
 | 23 | Quote Generator | ✅ Completed | Arrays, random selection |
 | 24 | Background Changer | ✅ Completed | Events, CSS variables, dynamic styles |
-| 25 | Text Analyzer | ⏳ Not Started | Strings, input handling, counting |
-| 26 | Calculator | ⏳ Not Started | Event delegation, operations |
+| 25 | Text Analyzer | ✅ Completed | Regex, text statistics, clipboard API |
+| 26 | Calculator | ✅ Completed | Event delegation, state management, arithmetic operations |
 | 27 | Tip Calculator | ⏳ Not Started | Forms, parsing, validation |
 | 28 | BMI Calculator | ⏳ Not Started | Formula implementation |
 | 29 | Temperature Converter | ⏳ Not Started | Unit conversion, input sync |
@@ -223,6 +237,13 @@ Each project follows the same basic structure: semantic HTML, pure CSS, vanilla 
 - `event.preventDefault()` is useful before custom keyboard behavior to avoid fighting the browser's default interactions.
 - Form validation becomes cleaner when error helpers update specific message elements instead of broad containers.
 - `async` and `await` can simulate a real backend flow with loading, success, and error states before an API exists.
+- Regular expressions are useful for text cleaning, word extraction, whitespace removal, sentence parsing, and input analysis.
+- `navigator.clipboard.readText()` makes paste flows possible, but it should be wrapped with `try...catch` and followed by UI synchronization.
+- `document.createElement()` plus `textContent` is safer than injecting user-controlled strings with `innerHTML`.
+- `Map` is useful for frequency counting, ranking values, and building dynamic UI from computed data.
+- Event delegation keeps interactive components cleaner by routing many button actions through a single parent listener.
+- A centralized state object makes calculator-like interfaces easier to reason about because display, previous values, operators, and overwrite behavior stay synchronized.
+- Fatigue creates avoidable bugs: typos, wrong variable names, missed function calls, and inconsistent naming. Shorter focused sessions produce cleaner code.
 
 ---
 
@@ -276,6 +297,9 @@ graph LR
 - Separate data, rendering, and event handling when possible.
 - Use readable functions with a single responsibility.
 - Handle invalid user input when forms are involved.
+- Prefer `textContent` and DOM node creation over unsafe HTML injection.
+- Use event delegation when many similar elements share related behavior.
+- Keep UI state centralized for interactive components that depend on multiple values.
 
 ---
 
@@ -316,6 +340,8 @@ fix(project-12): correct hamburger menu behavior on tablet
 style(project-13): improve responsive card grid spacing
 docs(readme): update progress and lessons learned
 refactor(project-24): simplify dynamic background rendering
+feat(project-25): add text analyzer project
+feat(project-26): add v1.0 calculator project
 ```
 
 ---
@@ -326,6 +352,7 @@ refactor(project-24): simplify dynamic background rendering
 |-----------|--------|---------|
 | **10 Projects** | ✅ Done | HTML/CSS basics are no longer abstract. |
 | **20 Projects** | ✅ Done | Phase 1 completed: HTML/CSS foundations plus essential UI component patterns. |
+| **26 Projects** | ✅ Done | JavaScript fundamentals are now active through text analysis, event delegation, state handling, and dynamic DOM rendering. |
 | **40 Projects** | ⏳ Pending | JavaScript fundamentals solid. |
 | **60 Projects** | ⏳ Pending | Advanced DOM, APIs, and UI patterns practiced. |
 | **77 Projects** | ⏳ Pending | Full vanilla web development roadmap completed. |
