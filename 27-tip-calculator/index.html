@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Propinas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <main class="receipt" role="main">
+
+    <header class="receipt__header">
+      <p class="receipt__eyebrow">Cuenta &middot; Ticket</p>
+      <h1 class="receipt__title">Calculadora<br>de Propinas</h1>
+      <p class="receipt__subtitle">Ingresa los datos y reparte la cuenta sin dramas</p>
+    </header>
+
+    <div class="perforation" aria-hidden="true"></div>
+
+    <form id="tip-form" class="receipt__form" novalidate>
+
+      <!-- Monto de la cuenta -->
+      <div class="field">
+        <label for="bill-amount" class="field__label">Monto de la cuenta</label>
+        <div class="field__input-wrap">
+          <span class="field__prefix" aria-hidden="true">S/</span>
+          <input
+            type="number"
+            id="bill-amount"
+            name="bill-amount"
+            class="field__input"
+            placeholder="0.00"
+            min="0"
+            step="0.01"
+            inputmode="decimal"
+            required
+            aria-describedby="bill-amount-error"
+          />
+        </div>
+        <p id="bill-amount-error" class="field__error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <!-- Porcentaje de propina -->
+      <fieldset class="field">
+        <legend class="field__label">¿Cuánto quieres dejar de propina?</legend>
+
+        <div class="tip-options" role="group" aria-label="Porcentajes de propina sugeridos">
+          <button type="button" class="tip-option" data-tip="5">5%</button>
+          <button type="button" class="tip-option" data-tip="10">10%</button>
+          <button type="button" class="tip-option" data-tip="15">15%</button>
+          <button type="button" class="tip-option" data-tip="20">20%</button>
+          <button type="button" class="tip-option" data-tip="25">25%</button>
+        </div>
+
+        <div class="field__input-wrap field__input-wrap--custom">
+          <input
+            type="number"
+            id="custom-tip"
+            name="custom-tip"
+            class="field__input"
+            placeholder="Personalizado"
+            min="0"
+            max="100"
+            step="1"
+            inputmode="numeric"
+            aria-describedby="tip-error"
+          />
+          <span class="field__suffix" aria-hidden="true">%</span>
+        </div>
+        <p id="tip-error" class="field__error" role="alert" aria-live="polite"></p>
+      </fieldset>
+
+      <!-- Número de personas -->
+      <div class="field">
+        <label for="people-count" class="field__label">Número de personas</label>
+        <div class="field__input-wrap field__input-wrap--stepper">
+          <button type="button" class="stepper-btn" id="decrease-people" aria-label="Restar una persona">&minus;</button>
+          <input
+            type="number"
+            id="people-count"
+            name="people-count"
+            class="field__input field__input--center"
+            value="1"
+            min="1"
+            step="1"
+            inputmode="numeric"
+            required
+            aria-describedby="people-error"
+          />
+          <button type="button" class="stepper-btn" id="increase-people" aria-label="Sumar una persona">&plus;</button>
+        </div>
+        <p id="people-error" class="field__error" role="alert" aria-live="polite"></p>
+      </div>
+
+      <div class="perforation perforation--small" aria-hidden="true"></div>
+
+      <!-- Resultados -->
+      <section class="results" aria-label="Resultados">
+        <div class="results__row">
+          <div class="results__text">
+            <span class="results__label">Propina por persona</span>
+            <span class="results__hint">/ persona</span>
+          </div>
+          <span class="results__value" id="tip-per-person" data-empty="true">S/ 0.00</span>
+        </div>
+
+        <div class="results__row">
+          <div class="results__text">
+            <span class="results__label">Total por persona</span>
+            <span class="results__hint">/ persona</span>
+          </div>
+          <span class="results__value" id="total-per-person" data-empty="true">S/ 0.00</span>
+        </div>
+
+        <div class="results__row results__row--grand">
+          <div class="results__text">
+            <span class="results__label">Total general</span>
+          </div>
+          <span class="results__value results__value--grand" id="grand-total" data-empty="true">S/ 0.00</span>
+        </div>
+      </section>
+
+      <button type="reset" id="reset-btn" class="reset-btn">
+        Restablecer
+      </button>
+
+    </form>
+
+    <div class="receipt__barcode" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <p class="receipt__footer">¡Gracias por tu visita!</p>
+
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
